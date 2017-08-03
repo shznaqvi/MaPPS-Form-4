@@ -57,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_VILLAGEACODE + " TEXT," +
             FormsTable.COLUMN_HOUSEHOLD + " TEXT," +
             FormsTable.COLUMN_LHWCODE + " TEXT," +
+            FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
@@ -341,6 +342,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_VILLAGEACODE, fc.getVillageacode());
         values.put(FormsTable.COLUMN_HOUSEHOLD, fc.getHousehold());
         values.put(FormsTable.COLUMN_LHWCODE, fc.getLhwCode());
+        values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
@@ -811,8 +813,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGEACODE,
                 FormsTable.COLUMN_HOUSEHOLD,
                 FormsTable.COLUMN_LHWCODE,
+                FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -874,6 +876,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_VILLAGEACODE,
                 FormsTable.COLUMN_HOUSEHOLD,
                 FormsTable.COLUMN_LHWCODE,
+                FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SA,
                 FormsTable.COLUMN_GPSLAT,
@@ -1005,6 +1008,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ParticipantsTable.COLUMN_CLUSTERCODE,
                 ParticipantsTable.COLUMN_HOUSEHOLD,
                 ParticipantsTable.COLUMN_LHWCODE,
+                ParticipantsTable.COLUMN_FORMDATE,
                 ParticipantsTable.COLUMN_ISTATUS,
                 ParticipantsTable.COLUMN_SCB,
                 ParticipantsTable.COLUMN_SCC,

@@ -24,6 +24,7 @@ public class FormsContract {
     private String household = ""; // Household number
     private String istatus = ""; // Interview Status
     private String lhwCode = ""; // lhwcode
+    private String formType = ""; // formtype: F4, F5
     private String sA = "";
     private String gpsLat = "";
     private String gpsLng = "";
@@ -205,6 +206,14 @@ public class FormsContract {
         this.lhwCode = lhwCode;
     }
 
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
+    }
+
     public String getTagID() {
         return tagID;
     }
@@ -225,6 +234,7 @@ public class FormsContract {
         this.villageacode = jsonObject.getString(FormsTable.COLUMN_VILLAGEACODE);
         this.household = jsonObject.getString(FormsTable.COLUMN_HOUSEHOLD);
         this.lhwCode = jsonObject.getString(FormsTable.COLUMN_LHWCODE);
+        this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
@@ -253,6 +263,7 @@ public class FormsContract {
         this.villageacode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGEACODE));
         this.household = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HOUSEHOLD));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LHWCODE));
+        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
@@ -285,6 +296,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_VILLAGEACODE, this.villageacode == null ? JSONObject.NULL : this.villageacode);
         json.put(FormsTable.COLUMN_HOUSEHOLD, this.household == null ? JSONObject.NULL : this.household);
         json.put(FormsTable.COLUMN_LHWCODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
+        json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         if (!this.sA.equals("")) {
             json.put(FormsTable.COLUMN_SA, this.sA == null ? JSONObject.NULL : new JSONObject(this.sA));
@@ -320,6 +332,7 @@ public class FormsContract {
         public static final String COLUMN_VILLAGEACODE = "villageacode";
         public static final String COLUMN_HOUSEHOLD = "household";
         public static final String COLUMN_LHWCODE = "lhwcode";
+        public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_GPSLAT = "gpslat";
