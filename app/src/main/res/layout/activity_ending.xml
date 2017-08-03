@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
             android:padding="2dp"
-            android:text="@string/mp02a014"
+            android:text="@string/mp04a014"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
@@ -36,31 +36,31 @@
                 android:id="@+id/mp02a01401"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mp02a01401" />
+                android:text="@string/mp04a01401" />
 
             <RadioButton
                 android:id="@+id/mp02a01402"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mp02a01402" />
+                android:text="@string/mp04a01402" />
 
             <RadioButton
                 android:id="@+id/mp02a01403"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mp02a01403" />
+                android:text="@string/mp04a01403" />
 
             <RadioButton
                 android:id="@+id/mp02a01404"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mp02a01404" />
+                android:text="@string/mp04a01404" />
 
             <RadioButton
                 android:id="@+id/mp02a01405"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mp02a01405" />
+                android:text="@string/mp04a01405" />
 
         </RadioGroup>
 

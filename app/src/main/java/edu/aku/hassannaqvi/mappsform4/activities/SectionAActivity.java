@@ -48,7 +48,7 @@ public class SectionAActivity extends Activity {
 
     private static final String TAG = SectionAActivity.class.getSimpleName();
 
-    @BindView(R.id.activity_section_a)
+    /*@BindView(R.id.activity_section_a)
     RelativeLayout activitySectionA;
     @BindView(R.id.scrollView01)
     ScrollView scrollView01;
@@ -457,6 +457,6 @@ public class SectionAActivity extends Activity {
 
         return true;
     }
-
+*/
 
 }

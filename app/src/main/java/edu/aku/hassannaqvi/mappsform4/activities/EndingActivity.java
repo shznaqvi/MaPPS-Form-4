@@ -84,7 +84,7 @@ public class EndingActivity extends Activity {
     public boolean ValidateForm() {
 
         if (mp02a014.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "" + getString(R.string.mp02a013), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "" + getString(R.string.mp04a013), Toast.LENGTH_SHORT).show();
             mp02a01405.setError("This data is Required!");
             return false;
         } else {

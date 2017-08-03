@@ -12,6 +12,16 @@
 
     </style>
 
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textViewStyle">@style/lblTextView</item>
+        <item name="android:editTextStyle">@style/txtEditText</item>
+        <item name="android:radioButtonStyle">@style/radiobutton</item>
+        <item name="android:checkboxStyle">@style/chkBox</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+
+
     <style name="radiogroup">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
