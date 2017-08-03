@@ -1,0 +1,91 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/lblTextView</item>
+        <item name="android:editTextStyle">@style/txtEditText</item>
+        <item name="android:radioButtonStyle">@style/radiobutton</item>
+        <item name="android:checkboxStyle">@style/chkBox</item>
+        <item name="android:typeface">serif</item>
+
+
+    </style>
+
+    <style name="radiogroup">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:padding">8dp</item>
+
+    </style>
+
+    <style name="radiobutton" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:button">@null</item>-->
+        <!--<item name="android:drawableRight">@android:drawable/btn_radio</item>-->
+        <item name="android:textSize">20sp</item>
+
+
+    </style>
+
+    <style name="button" parent="android:Widget.ActionButton">
+
+    </style>
+
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+
+
+    </style>
+
+    <style name="BackgroundStyle" parent="android:Widget.Material.Light.ScrollView">
+        <item name="android:padding">24dp</item>
+    </style>
+
+    <style name="lblTextView" parent="android:Widget.Material.Light.TextView">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textSize">24sp</item> <!--or 16sp-->
+        <item name="android:elevation">1dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+
+
+    </style>
+
+    <!--EDITTEXT-->
+    <style name="txtEditText" parent="android:Widget.Material.Light.EditText">
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">20sp</item><!--or 16sp-->
+        <item name="android:typeface">serif</item>
+
+
+    </style>
+
+    <style name="btnButton" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:elevation">2dp</item>
+
+
+    </style>
+
+    <style name="chkBox" parent="android:Widget.Material.Light.CompoundButton.CheckBox">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/white</item>
+
+
+    </style>
+
+
+</resources>
