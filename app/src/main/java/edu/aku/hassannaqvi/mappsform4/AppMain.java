@@ -12,6 +12,8 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -68,7 +70,10 @@ public class AppMain extends Application {
     //    For participant
     public static ArrayList<EligibleParticipants> Eparticipant;
     public static String currentParticipantName = "";
+    public static String formType = "";
+    public static JSONObject sA;
     public static String[] loginMem;
+
     public static long installedOn;
     public static int versionCode;
     public static String versionName;
@@ -76,6 +81,7 @@ public class AppMain extends Application {
     public static int partiFlag = 0;
     public static int maritalStatus = 0;
     public static int currentAge = 0;
+
     protected LocationManager locationManager;
     //    Login Members Array
     Location location;

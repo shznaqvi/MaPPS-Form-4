@@ -58,6 +58,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_HOUSEHOLD + " TEXT," +
             FormsTable.COLUMN_LHWCODE + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
+            FormsTable.COLUMN_PARTICIPNAT_ID + " TEXT," +
+            FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
@@ -342,6 +344,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_HOUSEHOLD, fc.getHousehold());
         values.put(FormsTable.COLUMN_LHWCODE, fc.getLhwCode());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
+        values.put(FormsTable.COLUMN_PARTICIPNAT_ID, fc.getParticipantID());
+        values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -549,6 +553,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
         db.close();
     }
+
+    public int updateSA() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SA, AppMain.fc.getsA());
+
+// Which row to update, based on the ID
+        String selection = " _ID = " + AppMain.fc.getID();
+        String[] selectionArgs = {String.valueOf(AppMain.fc.getID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+
 
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -885,6 +908,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_SYNCED,
                 FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_PARTICIPNAT_ID,
         };
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = ''";
         String[] whereArgs = null;

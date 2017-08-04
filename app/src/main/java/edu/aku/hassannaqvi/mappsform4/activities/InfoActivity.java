@@ -47,6 +47,17 @@ public class InfoActivity extends Activity  {
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
 
+        /*if (AppMain.formType.equals("Form - 5"))
+        {
+            mp04a003.setEnabled(false);
+            mp04a004.setEnabled(false);
+            mp04a005.setEnabled(false);
+        }else{
+            mp04a003.setEnabled(true);
+            mp04a004.setEnabled(true);
+            mp04a005.setEnabled(true);
+        }*/
+
     }
 
     @OnClick(R.id.checkParticipants) void onCheckParticipantsClick() {
@@ -141,6 +152,9 @@ public class InfoActivity extends Activity  {
         AppMain.fc.setClustercode(AppMain.curCluster);
         AppMain.fc.setHousehold(mp04a001.getText().toString());
         AppMain.fc.setDeviceID(AppMain.deviceId);
+        AppMain.fc.setParticipantID(mp04a002.getText().toString());
+        AppMain.fc.setFormType(AppMain.formType);
+
         //AppMain.fc.setVillageacode(mp02a006.getText().toString());
 
         //AppMain.fc.setLhwCode(LHWs.get(mp02aLHWs.getSelectedItem().toString()));
@@ -148,7 +162,6 @@ public class InfoActivity extends Activity  {
 
         JSONObject sInfo = new JSONObject();
 
-        sInfo.put("mp04a002", mp04a002.getText().toString());
         sInfo.put("mp04a003", mp04a003.getText().toString());
         sInfo.put("mp04a004", mp04a004.getText().toString());
         sInfo.put("mp04a005", mp04a005.getText().toString());

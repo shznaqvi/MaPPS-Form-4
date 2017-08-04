@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class FormsContract {
 
     private String projectName = "MaPPS Study";
-    private String surveyType = "Form 02: Enrolment and Baseline Assessment";
+    private String surveyType = "Pregnancy Confirmation and Ultrasound Assesment";
     private Long _ID;
     private String UID = "";
     private String formDate = ""; // Date
@@ -24,6 +24,26 @@ public class FormsContract {
     private String household = ""; // Household number
     private String istatus = ""; // Interview Status
     private String lhwCode = ""; // lhwcode
+    private String formType = "";
+    private String participantID = "";
+
+    public void setFormType(String formType) {
+        this.formType = formType;
+    }
+
+    public void setParticipantID(String participantID) {
+        this.participantID = participantID;
+    }
+
+    public String getFormType() {
+
+        return formType;
+    }
+
+    public String getParticipantID() {
+        return participantID;
+    }
+
     private String sA = "";
     private String gpsLat = "";
     private String gpsLng = "";
@@ -38,10 +58,12 @@ public class FormsContract {
     public FormsContract() {
     }
 
-    public FormsContract(String formDate, String household, String istatus) {
+    public FormsContract(String formDate, String household, String istatus, String participantID, String formType ) {
         this.formDate = formDate;
         this.household = household;
         this.istatus = istatus;
+        this.participantID = participantID;
+        this.formType = formType;
     }
 
     public String getProjectName() {
@@ -226,6 +248,8 @@ public class FormsContract {
         this.household = jsonObject.getString(FormsTable.COLUMN_HOUSEHOLD);
         this.lhwCode = jsonObject.getString(FormsTable.COLUMN_LHWCODE);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
+        this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPNAT_ID);
+        this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -254,6 +278,8 @@ public class FormsContract {
         this.household = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HOUSEHOLD));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LHWCODE));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
+        this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPNAT_ID));
+        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -286,6 +312,8 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_HOUSEHOLD, this.household == null ? JSONObject.NULL : this.household);
         json.put(FormsTable.COLUMN_LHWCODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
+        json.put(FormsTable.COLUMN_PARTICIPNAT_ID, this.participantID == null ? JSONObject.NULL : this.participantID);
+        json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         if (!this.sA.equals("")) {
             json.put(FormsTable.COLUMN_SA, this.sA == null ? JSONObject.NULL : new JSONObject(this.sA));
         }
@@ -321,6 +349,8 @@ public class FormsContract {
         public static final String COLUMN_HOUSEHOLD = "household";
         public static final String COLUMN_LHWCODE = "lhwcode";
         public static final String COLUMN_ISTATUS = "istatus";
+        public static final String COLUMN_PARTICIPNAT_ID = "participantid";
+        public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
