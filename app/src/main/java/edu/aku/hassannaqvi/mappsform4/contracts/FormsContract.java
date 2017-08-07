@@ -26,24 +26,7 @@ public class FormsContract {
     private String lhwCode = ""; // lhwcode
     private String formType = "";
     private String participantID = "";
-
-    public void setFormType(String formType) {
-        this.formType = formType;
-    }
-
-    public void setParticipantID(String participantID) {
-        this.participantID = participantID;
-    }
-
-    public String getFormType() {
-
-        return formType;
-    }
-
-    public String getParticipantID() {
-        return participantID;
-    }
-
+    private String sInfo = "";
     private String sA = "";
     private String gpsLat = "";
     private String gpsLng = "";
@@ -64,6 +47,23 @@ public class FormsContract {
         this.istatus = istatus;
         this.participantID = participantID;
         this.formType = formType;
+    }
+
+    public String getFormType() {
+
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
+    }
+
+    public String getParticipantID() {
+        return participantID;
+    }
+
+    public void setParticipantID(String participantID) {
+        this.participantID = participantID;
     }
 
     public String getProjectName() {
@@ -146,6 +146,14 @@ public class FormsContract {
         this.istatus = istatus;
     }
 
+    public String getsInfo() {
+        return sInfo;
+    }
+
+    public void setsInfo(String sInfo) {
+        this.sInfo = sInfo;
+    }
+
     public String getsA() {
         return sA;
     }
@@ -153,6 +161,7 @@ public class FormsContract {
     public void setsA(String sA) {
         this.sA = sA;
     }
+
 
 
     public String getGpsLat() {
@@ -250,6 +259,7 @@ public class FormsContract {
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPNAT_ID);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
+        this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -280,6 +290,7 @@ public class FormsContract {
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPNAT_ID));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
+        this.sInfo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SINFO));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -314,9 +325,19 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_PARTICIPNAT_ID, this.participantID == null ? JSONObject.NULL : this.participantID);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
-        if (!this.sA.equals("")) {
-            json.put(FormsTable.COLUMN_SA, this.sA == null ? JSONObject.NULL : new JSONObject(this.sA));
+        try {
+            if (!this.sInfo.equals("")) {
+                json.put(FormsTable.COLUMN_SINFO, this.sInfo == null ? JSONObject.NULL : new JSONObject(this.sInfo));
+            }
+        } catch (Exception e) {
         }
+        try {
+            if (!this.sA.equals("")) {
+                json.put(FormsTable.COLUMN_SA, this.sA == null ? JSONObject.NULL : new JSONObject(this.sA));
+            }
+        } catch (Exception e) {
+        }
+
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
         json.put(FormsTable.COLUMN_GPSTIME, this.gpsTime == null ? JSONObject.NULL : this.gpsTime);
@@ -351,6 +372,7 @@ public class FormsContract {
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_PARTICIPNAT_ID = "participantid";
         public static final String COLUMN_FORMTYPE = "formtype";
+        public static final String COLUMN_SINFO = "info";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

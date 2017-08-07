@@ -74,6 +74,7 @@
                 android:maxLines="1"
                 android:padding="2px"
                 android:singleLine="true"
+                android:text="test1234"
                 android:textAlignment="center"
                 android:textColor="#efefef"
                 android:textSize="22sp" />
@@ -92,6 +93,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
+                android:text="test1234"
                 android:textAlignment="center"
                 android:textSize="25sp" />
             <!--android:text="aku?dmu"-->
@@ -108,6 +110,7 @@
                 android:maxLines="1"
                 android:padding="2px"
                 android:singleLine="true"
+                android:text="dmu@aku"
                 android:textAlignment="center"
                 android:textColor="#efefef"
                 android:textSize="22sp" />
@@ -126,6 +129,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
+                android:text="aku?dmu"
                 android:textAlignment="center"
                 android:textSize="25sp" />
             <!--android:text="test1234"-->

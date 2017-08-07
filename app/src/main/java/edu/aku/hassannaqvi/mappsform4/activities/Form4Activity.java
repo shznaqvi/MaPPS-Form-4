@@ -7,22 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.TextView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import edu.aku.hassannaqvi.mappsform4.core.AppMain;
-import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
-import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -30,6 +22,14 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import edu.aku.hassannaqvi.mappsform4.R;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
+import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
 public class Form4Activity extends AppCompatActivity  {
 
@@ -148,17 +148,10 @@ public class Form4Activity extends AppCompatActivity  {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
+                Intent sece = new Intent(this, EndingActivity.class);
+                sece.putExtra("complete", true);
+                startActivity(sece);
 
-
-                if(mp04e00201.isChecked())
-                {
-                    Intent intent = new Intent(this, Form5Activity.class);
-                    startActivity(intent);
-                }else{
-                    Intent sece = new Intent(this, EndingActivity.class);
-                    sece.putExtra("complete", true);
-                    startActivity(sece);
-                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -767,46 +760,46 @@ public class Form4Activity extends AppCompatActivity  {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        AppMain.sA  = new JSONObject();
+        JSONObject form4 = new JSONObject();
 
-        AppMain.sA.put("mp04b001", mp04b001.getText().toString());
-        AppMain.sA.put("mp04b00199", mp04b00199.isChecked() ? "99" : "0");
-        AppMain.sA.put("mp04b002", mp04b002.getText().toString());
+        form4.put("mp04b001", mp04b001.getText().toString());
+        form4.put("mp04b00199", mp04b00199.isChecked() ? "99" : "0");
+        form4.put("mp04b002", mp04b002.getText().toString());
 
-        AppMain.sA.put("mp04c001", mp02d001.getText().toString());
-        AppMain.sA.put("mp04c001id1", mp02d001id1.getSelectedItem().toString());
+        form4.put("mp04c001", mp02d001.getText().toString());
+        form4.put("mp04c001id1", mp02d001id1.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c002", mp02d002.getText().toString());
-        AppMain.sA.put("mp04c002id2", mp02d002id2.getSelectedItem().toString());
+        form4.put("mp04c002", mp02d002.getText().toString());
+        form4.put("mp04c002id2", mp02d002id2.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c003", flag_q4 ? "1" : "2");
+        form4.put("mp04c003", flag_q4 ? "1" : "2");
 
-        AppMain.sA.put("mp04c004", mp02d004.getText().toString());
-        AppMain.sA.put("mp04c004id3", mp02d004id3.getSelectedItem().toString());
+        form4.put("mp04c004", mp02d004.getText().toString());
+        form4.put("mp04c004id3", mp02d004id3.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c005", mp02d005.getText().toString());
-        AppMain.sA.put("mp04c005id1", mp02d005id1.getSelectedItem().toString());
+        form4.put("mp04c005", mp02d005.getText().toString());
+        form4.put("mp04c005id1", mp02d005id1.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c006", mp02d006.getText().toString());
-        AppMain.sA.put("mp04c006id2", mp02d006id2.getSelectedItem().toString());
+        form4.put("mp04c006", mp02d006.getText().toString());
+        form4.put("mp04c006id2", mp02d006id2.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c007", flag_q8 ? "1" : "2");
+        form4.put("mp04c007", flag_q8 ? "1" : "2");
 
-        AppMain.sA.put("mp04c008", mp02d008.getText().toString());
-        AppMain.sA.put("mp04c008id3", mp02d008id3.getSelectedItem().toString());
+        form4.put("mp04c008", mp02d008.getText().toString());
+        form4.put("mp04c008id3", mp02d008id3.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c009", mp02d009.getText().toString());
-        AppMain.sA.put("mp04c009id1", mp02d009id1.getSelectedItem().toString());
+        form4.put("mp04c009", mp02d009.getText().toString());
+        form4.put("mp04c009id1", mp02d009id1.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c010", mp02d010.getText().toString());
-        AppMain.sA.put("mp04c010id2", mp02d010id2.getSelectedItem().toString());
+        form4.put("mp04c010", mp02d010.getText().toString());
+        form4.put("mp04c010id2", mp02d010id2.getSelectedItem().toString());
 
-        AppMain.sA.put("mp04c011", flag_q12 ? "1" : "2");
+        form4.put("mp04c011", flag_q12 ? "1" : "2");
 
-        AppMain.sA.put("mp04c012", mp02d012.getText().toString());
-        AppMain.sA.put("mp04c012id3", mp02d012id3.getSelectedItem().toString());
+        form4.put("mp04c012", mp02d012.getText().toString());
+        form4.put("mp04c012id3", mp02d012id3.getSelectedItem().toString());
 
-        AppMain.fc.setsA(String.valueOf(AppMain.sA));
+        AppMain.fc.setsA(String.valueOf(form4));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -815,7 +808,7 @@ public class Form4Activity extends AppCompatActivity  {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSA();
+        int updcount = db.updatesA();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

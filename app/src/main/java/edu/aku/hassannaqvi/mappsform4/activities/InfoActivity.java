@@ -1,16 +1,16 @@
 package edu.aku.hassannaqvi.mappsform4.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.Activity;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -21,10 +21,10 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import edu.aku.hassannaqvi.mappsform4.core.AppMain;
-import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 
 public class InfoActivity extends Activity  {
 
@@ -103,8 +103,14 @@ public class InfoActivity extends Activity  {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-                Intent intent = new Intent(this, Form4Activity.class);
-                startActivity(intent);
+
+                if (AppMain.formType.equals("Form - 4")) {
+                    Intent intent = new Intent(this, Form4Activity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, Form5Activity.class);
+                    startActivity(intent);
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -153,7 +159,6 @@ public class InfoActivity extends Activity  {
         AppMain.fc.setDeviceID(AppMain.deviceId);
         AppMain.fc.setParticipantID(mp04a002.getText().toString());
         AppMain.fc.setFormType(AppMain.formType);
-
         //AppMain.fc.setVillageacode(mp02a006.getText().toString());
 
         //AppMain.fc.setLhwCode(LHWs.get(mp02aLHWs.getSelectedItem().toString()));
@@ -166,7 +171,7 @@ public class InfoActivity extends Activity  {
         sInfo.put("mp04a005", mp04a005.getText().toString());
         sInfo.put("mp04a13", mp04a01301.isChecked() ? "1" : mp04a01302.isChecked() ? "2" : "0");
 
-        AppMain.fc.setsA(String.valueOf(sInfo));
+        AppMain.fc.setsInfo(String.valueOf(sInfo));
 
         setGPS();
 

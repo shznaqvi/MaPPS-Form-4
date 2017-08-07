@@ -4,24 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
-
-import android.widget.Toast;
-
-import org.json.JSONException;
-
-import java.text.SimpleDateFormat;
 
 public class Form5Activity extends AppCompatActivity  {
 
@@ -216,22 +216,20 @@ public class Form5Activity extends AppCompatActivity  {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
-        //JSONObject sA = new JSONObject();
+        JSONObject form5 = new JSONObject();
 
-        AppMain.sA.put("mp05b001", mp05b001.getText().toString());
-        AppMain.sA.put("mp05b002w", mp05b002w.getText().toString());
-        AppMain.sA.put("mp05b002d", mp05b002d.getText().toString());
-        AppMain.sA.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : "0");
-        AppMain.sA.put("mp05c002", mp05c00201.isChecked() ? "1" : mp05c00202.isChecked() ? "2" : "0");
-        AppMain.sA.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : "0");
-        AppMain.sA.put("mp05c004", mp05c00401.isChecked() ? "1" : mp05c00402.isChecked() ? "2" : "0");
-        AppMain.sA.put("mp05c005", mp05c00501.isChecked() ? "1" : mp05c00502.isChecked() ? "2" : "0");
-        AppMain.sA.put("mp05c006", mp05c006.getText().toString());
-
-
+        form5.put("mp05b001", mp05b001.getText().toString());
+        form5.put("mp05b002w", mp05b002w.getText().toString());
+        form5.put("mp05b002d", mp05b002d.getText().toString());
+        form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : "0");
+        form5.put("mp05c002", mp05c00201.isChecked() ? "1" : mp05c00202.isChecked() ? "2" : "0");
+        form5.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : "0");
+        form5.put("mp05c004", mp05c00401.isChecked() ? "1" : mp05c00402.isChecked() ? "2" : "0");
+        form5.put("mp05c005", mp05c00501.isChecked() ? "1" : mp05c00502.isChecked() ? "2" : "0");
+        form5.put("mp05c006", mp05c006.getText().toString());
 
 
-        AppMain.fc.setsA(String.valueOf(AppMain.sA));
+        AppMain.fc.setsA(String.valueOf(form5));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -240,7 +238,7 @@ public class Form5Activity extends AppCompatActivity  {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSA();
+        int updcount = db.updatesA();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
