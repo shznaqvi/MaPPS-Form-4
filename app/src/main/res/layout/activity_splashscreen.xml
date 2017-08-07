@@ -20,7 +20,7 @@
             android:layout_gravity="center_horizontal"
             android:contentDescription="Mapps LOGO"
             android:paddingTop="72dp"
-            android:src="@drawable/mapps2_icon" />
+            android:src="@drawable/mapps4_icon" />
 
         <TextView
             android:id="@+id/fullscreen_content"

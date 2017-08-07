@@ -61,75 +61,90 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="0dp"
                 android:contentDescription="Mapps LOGO"
-                android:src="@drawable/mapps2_icon" />
+                android:src="@drawable/mapps4_icon" />
 
-            <AutoCompleteTextView
-                android:id="@+id/email1"
+
+            <LinearLayout
+                android:id="@+id/loginLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:background="#565656"
-                android:hint="User1 Username"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:padding="2px"
-                android:singleLine="true"
-                android:textAlignment="center"
-                android:textColor="#efefef"
-                android:textSize="22sp" />
-            <!--android:text="dmu@aku"-->
+                android:orientation="vertical">
+
+                <AutoCompleteTextView
+                    android:id="@+id/email1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="#565656"
+                    android:hint="User1 Username"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="2px"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColor="#efefef"
+                    android:textSize="22sp" />
+                <!--android:text="dmu@aku"-->
 
 
-            <EditText
-                android:id="@+id/password1"
+                <EditText
+                    android:id="@+id/password1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+                <!--android:text="aku?dmu"-->
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/loginLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-            <!--android:text="aku?dmu"-->
+                android:orientation="vertical">
+
+                <AutoCompleteTextView
+                    android:id="@+id/email2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="#565656"
+                    android:hint="User2 Username"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="2px"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColor="#efefef"
+                    android:textSize="22sp" />
+                <!--android:text="test1234"-->
 
 
-            <AutoCompleteTextView
-                android:id="@+id/email2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:background="#565656"
-                android:hint="User2 Username"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:padding="2px"
-                android:singleLine="true"
-                android:textAlignment="center"
-                android:textColor="#efefef"
-                android:textSize="22sp" />
-            <!--android:text="test1234"-->
+                <EditText
+                    android:id="@+id/password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/prompt_password"
+                    android:imeActionId="@+id/login"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+                <!--android:text="test1234"-->
 
-
-            <EditText
-                android:id="@+id/password2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint="@string/prompt_password"
-                android:imeActionId="@+id/login"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-            <!--android:text="test1234"-->
-
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
