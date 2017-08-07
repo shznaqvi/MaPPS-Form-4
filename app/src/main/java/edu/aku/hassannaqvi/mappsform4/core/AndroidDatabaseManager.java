@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.mappsform4;
+package edu.aku.hassannaqvi.mappsform4.core;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.

@@ -13,8 +13,8 @@ import org.json.JSONException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import edu.aku.hassannaqvi.mappsform4.AppMain;
-import edu.aku.hassannaqvi.mappsform4.DatabaseHelper;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import edu.aku.hassannaqvi.mappsform4.R;
 
 public class EndingActivity extends Activity {

@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.mappsform4;
+package edu.aku.hassannaqvi.mappsform4.core;
 
 import android.content.ContentValues;
 import android.content.Context;

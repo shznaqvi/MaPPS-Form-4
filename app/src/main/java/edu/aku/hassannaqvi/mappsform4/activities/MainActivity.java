@@ -25,9 +25,9 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.aku.hassannaqvi.mappsform4.AndroidDatabaseManager;
-import edu.aku.hassannaqvi.mappsform4.AppMain;
-import edu.aku.hassannaqvi.mappsform4.DatabaseHelper;
+import edu.aku.hassannaqvi.mappsform4.core.AndroidDatabaseManager;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetEligibles;

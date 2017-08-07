@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.mappsform4;
+package edu.aku.hassannaqvi.mappsform4.core;
 
 import android.app.Application;
 import android.content.Context;
@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.mappsform4.other.TypefaceUtil;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.ParticipantsContract;
 import edu.aku.hassannaqvi.mappsform4.otherclasses.EligibleParticipants;

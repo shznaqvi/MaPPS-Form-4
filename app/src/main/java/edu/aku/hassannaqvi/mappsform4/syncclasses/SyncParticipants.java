@@ -19,8 +19,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.mappsform4.AppMain;
-import edu.aku.hassannaqvi.mappsform4.DatabaseHelper;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import edu.aku.hassannaqvi.mappsform4.contracts.ParticipantsContract;
 
 /**

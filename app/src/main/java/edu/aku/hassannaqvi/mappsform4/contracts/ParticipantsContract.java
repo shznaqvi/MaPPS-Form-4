@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.aku.hassannaqvi.mappsform4.AppMain;
+import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.

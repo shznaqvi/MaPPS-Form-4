@@ -1,48 +1,6 @@
 package edu.aku.hassannaqvi.mappsform4.activities;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import edu.aku.hassannaqvi.mappsform4.AppMain;
-import edu.aku.hassannaqvi.mappsform4.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
-import edu.aku.hassannaqvi.mappsform4.contracts.EligiblesContract;
-import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
-import edu.aku.hassannaqvi.mappsform4.contracts.LHWsContract;
-import edu.aku.hassannaqvi.mappsform4.otherclasses.EligibleParticipants;
 
 public class SectionAActivity extends Activity {
 
