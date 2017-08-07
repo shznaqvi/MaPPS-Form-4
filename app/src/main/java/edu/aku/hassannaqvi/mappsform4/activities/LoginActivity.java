@@ -27,12 +27,15 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -101,6 +104,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     Spinner spUC;
     @BindView(R.id.syncClusters)
     Button syncClusters;
+    @BindView(R.id.loginLayout1)
+    LinearLayout loginLayout1;
+    @BindView(R.id.loginLayout2)
+    LinearLayout loginLayout2;
 
     DatabaseHelper db;
     List<String> clustersCode;
@@ -574,12 +581,20 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                         mPasswordView2.setError(getString(R.string.error_incorrect_password));
                         mPasswordView2.requestFocus();
                         Toast.makeText(LoginActivity.this, mEmail2 + " " + mPassword2, Toast.LENGTH_SHORT).show();
+
+                        Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+
+                        loginLayout2.startAnimation(shake);
                     }
 
                 } else {
                     mPasswordView1.setError(getString(R.string.error_incorrect_password));
                     mPasswordView1.requestFocus();
                     Toast.makeText(LoginActivity.this, mEmail1 + " " + mPassword1, Toast.LENGTH_SHORT).show();
+
+                    Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+
+                    loginLayout1.startAnimation(shake);
                 }
             } else {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
