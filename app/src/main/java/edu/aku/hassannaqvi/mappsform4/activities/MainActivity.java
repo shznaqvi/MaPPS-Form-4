@@ -31,7 +31,7 @@ import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
-import edu.aku.hassannaqvi.mappsform4.getclasses.GetEligibles;
+import edu.aku.hassannaqvi.mappsform4.getclasses.GetEnrolled;
 import edu.aku.hassannaqvi.mappsform4.otherclasses.FormsList;
 import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncForms;
 import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncParticipants;
@@ -334,7 +334,7 @@ public class MainActivity extends Activity {
 
             // Sync Randomization
             Toast.makeText(getApplicationContext(), "Getting Eligibleomization", Toast.LENGTH_SHORT).show();
-            new GetEligibles(this).execute();
+            new GetEnrolled(this).execute();
 
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

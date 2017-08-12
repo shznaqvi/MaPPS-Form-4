@@ -15,8 +15,10 @@ import android.view.View;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 
+import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.mappsform4.other.TypefaceUtil;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.ParticipantsContract;
@@ -32,12 +34,18 @@ public class AppMain extends Application {
     //    public static final String _IP = "10.1.79.42"; // Matiyari server
     public static final Integer _PORT = 8080; // Port - with colon (:)
 
-    public static final String _PROJECT_FOLDER = "mapps/form2/api/";
+    public static final String _PROJECT_FOLDER_2 = "mapps/form2/api/";
+    public static final String _PROJECT_FOLDER_4 = "mapps/form4/api/";
 
     public static final String _HOST_URL =
             "http://" + _IP
                     + ":" + _PORT
-                    + "/" + _PROJECT_FOLDER;
+                    + "/" + _PROJECT_FOLDER_2;
+
+    public static final String _HOST_URL_4 =
+            "http://" + _IP
+                    + ":" + _PORT
+                    + "/" + _PROJECT_FOLDER_4;
     // Retrieve FileName.php from Contract class Abstract _URI
 
 
@@ -69,7 +77,7 @@ public class AppMain extends Application {
     public static String areaCode;
     public static String curCluster;
     //    For participant
-    public static ArrayList<EligibleParticipants> Eparticipant;
+    public static ArrayList<EnrolledContract> Eparticipant;
     public static String currentParticipantName = "";
     public static String formType = "";
     public static JSONObject sA;
@@ -86,6 +94,7 @@ public class AppMain extends Application {
     protected LocationManager locationManager;
     //    Login Members Array
     Location location;
+
 
     @Override
     public void onCreate() {

@@ -19,8 +19,8 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.mappsform4.contracts.ClustersContract;
-import edu.aku.hassannaqvi.mappsform4.contracts.EligiblesContract;
-import edu.aku.hassannaqvi.mappsform4.contracts.EligiblesContract.EligiblesTable;
+import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
+import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract.EnrolledTable;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.mappsform4.contracts.LHWsContract;
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_HOUSEHOLD + " TEXT," +
             FormsTable.COLUMN_LHWCODE + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
-            FormsTable.COLUMN_PARTICIPNAT_ID + " TEXT," +
+            FormsTable.COLUMN_SNO + " TEXT," +
             FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SINFO + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
@@ -105,17 +105,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + ParticipantsTable.COLUMN_SYNCED + " TEXT,"
             + ParticipantsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-    private static final String SQL_CREATE_ELIGIBLES = "CREATE TABLE "
-            + EligiblesTable.TABLE_NAME + "(" +
-            EligiblesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-            EligiblesTable.COLUMN_NAME_LUID + " TEXT," +
-            EligiblesTable.COLUMN_NAME_SUBAREACODE + " TEXT," +
-            EligiblesTable.COLUMN_NAME_LHWCODE + " TEXT," +
-            EligiblesTable.COLUMN_NAME_HOUSEHOLD + " TEXT," +
-            EligiblesTable.COLUMN_SYNCED + " TEXT,"
-            + EligiblesTable.COLUMN_SYNCED_DATE + " TEXT," +
-            EligiblesTable.COLUMN_NAME_DOB + " TEXT," +
-            EligiblesTable.COLUMN_NAME_WOMEN_NAME + " TEXT" +
+    private static final String SQL_CREATE_ENROLLED = "CREATE TABLE "
+            + EnrolledTable.TABLE_NAME + "(" +
+            EnrolledTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            EnrolledTable.COLUMN_NAME_LUID + " TEXT," +
+            EnrolledTable.COLUMN_NAME_SUBAREACODE + " TEXT," +
+            EnrolledTable.COLUMN_NAME_LHWCODE + " TEXT," +
+            EnrolledTable.COLUMN_NAME_HOUSEHOLD + " TEXT," +
+            EnrolledTable.COLUMN_SYNCED + " TEXT,"
+            + EnrolledTable.COLUMN_SYNCED_DATE + " TEXT," +
+            EnrolledTable.COLUMN_NAME_SNO + " TEXT," +
+            EnrolledTable.COLUMN_NAME_WOMEN_NAME + " TEXT" +
             " );";
     private static final String SQL_CREATE_LHWS = "CREATE TABLE "
             + LHWsContract.LHWsTable.TABLE_NAME + "(" +
@@ -140,8 +140,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + LHWsContract.LHWsTable.TABLE_NAME;
     private static final String SQL_DELETE_CLUSTERS =
             "DROP TABLE IF EXISTS " + ClustersContract.ClustersTable.TABLE_NAME;
-    private static final String SQL_DELETE_ELIGIBLES =
-            "DROP TABLE IF EXISTS " + EligiblesTable.TABLE_NAME;
+    private static final String SQL_DELETE_ENROLLED =
+            "DROP TABLE IF EXISTS " + EnrolledTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
     private static final String SQL_DELETE_PARTICIPANTS =
@@ -158,7 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USERS);
-        db.execSQL(SQL_CREATE_ELIGIBLES);
+        db.execSQL(SQL_CREATE_ENROLLED);
         db.execSQL(SQL_CREATE_LHWS);
         db.execSQL(SQL_CREATE_CLUSTERS);
         db.execSQL(SQL_CREATE_FORMS);
@@ -169,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(SQL_DELETE_USERS);
-        db.execSQL(SQL_DELETE_ELIGIBLES);
+        db.execSQL(SQL_DELETE_ENROLLED);
         db.execSQL(SQL_DELETE_LHWS);
         db.execSQL(SQL_DELETE_CLUSTERS);
         db.execSQL(SQL_DELETE_FORMS);
@@ -202,27 +202,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void syncEligibles(JSONArray eligibleslist) {
+    public void syncEnrolled(JSONArray enrolledlist) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(EligiblesTable.TABLE_NAME, null, null);
+        db.delete(EnrolledTable.TABLE_NAME, null, null);
         try {
-            JSONArray jsonArray = eligibleslist;
+            JSONArray jsonArray = enrolledlist;
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObjectEC = jsonArray.getJSONObject(i);
 
-                EligiblesContract ec = new EligiblesContract();
+                EnrolledContract ec = new EnrolledContract();
                 ec.Sync(jsonObjectEC);
 
                 ContentValues values = new ContentValues();
 
-                values.put(EligiblesTable.COLUMN_NAME_LUID, ec.getLUID());
-                values.put(EligiblesTable.COLUMN_NAME_SUBAREACODE, ec.getSubAreaCode());
-                values.put(EligiblesTable.COLUMN_NAME_LHWCODE, ec.getLhwCode());
-                values.put(EligiblesTable.COLUMN_NAME_HOUSEHOLD, ec.getHouseHold());
-                values.put(EligiblesTable.COLUMN_NAME_WOMEN_NAME, ec.getWomen_name());
-                values.put(EligiblesTable.COLUMN_NAME_DOB, ec.getDob());
+                values.put(EnrolledTable.COLUMN_NAME_LUID, ec.getLUID());
+                values.put(EnrolledTable.COLUMN_NAME_SUBAREACODE, ec.getSubAreaCode());
+                values.put(EnrolledTable.COLUMN_NAME_LHWCODE, ec.getLhwCode());
+                values.put(EnrolledTable.COLUMN_NAME_HOUSEHOLD, ec.getHouseHold());
+                values.put(EnrolledTable.COLUMN_NAME_WOMEN_NAME, ec.getWomen_name());
+                values.put(EnrolledTable.COLUMN_NAME_SNO, ec.getSno());
 
-                db.insert(EligiblesTable.TABLE_NAME, null, values);
+                db.insert(EnrolledTable.TABLE_NAME, null, values);
             }
 
 
@@ -345,7 +345,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_HOUSEHOLD, fc.getHousehold());
         values.put(FormsTable.COLUMN_LHWCODE, fc.getLhwCode());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
-        values.put(FormsTable.COLUMN_PARTICIPNAT_ID, fc.getParticipantID());
+        values.put(FormsTable.COLUMN_SNO, fc.getSno());
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_SINFO, fc.getsInfo());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
@@ -431,13 +431,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
-    public void updateEligibles(String id) {
+    public void updateEnrolled(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(EligiblesTable.COLUMN_SYNCED, true);
-        values.put(EligiblesTable.COLUMN_SYNCED_DATE, new Date().toString());
+        values.put(EnrolledTable.COLUMN_SYNCED, true);
+        values.put(EnrolledTable.COLUMN_SYNCED_DATE, new Date().toString());
 
 // Which row to update, based on the title
         String where = FormsTable._ID + " LIKE ?";
@@ -680,32 +680,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allCC;
     }
 
-    public Collection<EligiblesContract> getEligiblesByHousehold(String clusterCode, String lhwCode, String hhno) {
+    public Collection<EnrolledContract> getEnrolledByHousehold(String clusterCode, String lhwCode, String hhno) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                EligiblesTable.COLUMN_NAME_LUID,
-                EligiblesTable.COLUMN_NAME_WOMEN_NAME,
-                EligiblesTable.COLUMN_NAME_DOB,
-                EligiblesTable.COLUMN_NAME_SUBAREACODE,
-                EligiblesTable.COLUMN_NAME_LHWCODE,
-                EligiblesTable.COLUMN_NAME_HOUSEHOLD
+                EnrolledTable.COLUMN_NAME_LUID,
+                EnrolledTable.COLUMN_NAME_WOMEN_NAME,
+                EnrolledTable.COLUMN_NAME_SNO,
+                EnrolledTable.COLUMN_NAME_SUBAREACODE,
+                EnrolledTable.COLUMN_NAME_LHWCODE,
+                EnrolledTable.COLUMN_NAME_HOUSEHOLD
         };
 
-        String whereClause = EligiblesTable.COLUMN_NAME_SUBAREACODE + " = ? AND " +
-                EligiblesTable.COLUMN_NAME_LHWCODE + " = ? AND " +
-                EligiblesTable.COLUMN_NAME_HOUSEHOLD + " = ?";
+        String whereClause = EnrolledTable.COLUMN_NAME_SUBAREACODE + " = ? AND " +
+                EnrolledTable.COLUMN_NAME_LHWCODE + " = ? AND " +
+                EnrolledTable.COLUMN_NAME_HOUSEHOLD + " = ?";
         String[] whereArgs = new String[]{clusterCode, lhwCode, hhno};
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                EligiblesTable.COLUMN_NAME_WOMEN_NAME + " ASC";
+                EnrolledTable.COLUMN_NAME_WOMEN_NAME + " ASC";
 
-        Collection<EligiblesContract> allEC = new ArrayList<>();
+        Collection<EnrolledContract> allEC = new ArrayList<>();
         try {
             c = db.query(
-                    EligiblesTable.TABLE_NAME,  // The table to query
+                    EnrolledTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -714,7 +714,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                EligiblesContract ec = new EligiblesContract();
+                EnrolledContract ec = new EnrolledContract();
                 allEC.add(ec.Hydrate(c));
             }
         } finally {
@@ -728,17 +728,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEC;
     }
 
-    public Collection<EligiblesContract> getAllEligibles() {
+    public Collection<EnrolledContract> getAllEnrolled() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                EligiblesTable._ID,
-                EligiblesTable.COLUMN_NAME_LUID,
-                EligiblesTable.COLUMN_NAME_SUBAREACODE,
-                EligiblesTable.COLUMN_NAME_LHWCODE,
-                EligiblesTable.COLUMN_NAME_HOUSEHOLD,
-                EligiblesTable.COLUMN_NAME_DOB,
-                EligiblesTable.COLUMN_NAME_WOMEN_NAME
+                EnrolledTable._ID,
+                EnrolledTable.COLUMN_NAME_LUID,
+                EnrolledTable.COLUMN_NAME_SUBAREACODE,
+                EnrolledTable.COLUMN_NAME_LHWCODE,
+                EnrolledTable.COLUMN_NAME_HOUSEHOLD,
+                EnrolledTable.COLUMN_NAME_SNO,
+                EnrolledTable.COLUMN_NAME_WOMEN_NAME
         };
 
         String whereClause = null;
@@ -747,12 +747,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy =
-                EligiblesTable._ID + " ASC";
+                EnrolledTable._ID + " ASC";
 
-        Collection<EligiblesContract> allEC = new ArrayList<>();
+        Collection<EnrolledContract> allEC = new ArrayList<>();
         try {
             c = db.query(
-                    EligiblesTable.TABLE_NAME,  // The table to query
+                    EnrolledTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -761,7 +761,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                EligiblesContract ec = new EligiblesContract();
+                EnrolledContract ec = new EnrolledContract();
                 allEC.add(ec.Hydrate(c));
             }
         } finally {
@@ -775,31 +775,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allEC;
     }
 
-    public Collection<EligiblesContract> getUnsyncedEligibles() {
+    public Collection<EnrolledContract> getUnsyncedEnrolled() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                EligiblesTable._ID,
-                EligiblesTable.COLUMN_NAME_LUID,
-                EligiblesTable.COLUMN_NAME_SUBAREACODE,
-                EligiblesTable.COLUMN_NAME_LHWCODE,
-                EligiblesTable.COLUMN_NAME_HOUSEHOLD,
-                EligiblesTable.COLUMN_NAME_DOB,
-                EligiblesTable.COLUMN_NAME_WOMEN_NAME
+                EnrolledTable._ID,
+                EnrolledTable.COLUMN_NAME_LUID,
+                EnrolledTable.COLUMN_NAME_SUBAREACODE,
+                EnrolledTable.COLUMN_NAME_LHWCODE,
+                EnrolledTable.COLUMN_NAME_HOUSEHOLD,
+                EnrolledTable.COLUMN_NAME_SNO,
+                EnrolledTable.COLUMN_NAME_WOMEN_NAME
         };
 
-        String whereClause = EligiblesTable.COLUMN_SYNCED + " is null OR " + EligiblesTable.COLUMN_SYNCED + " = ''";
+        String whereClause = EnrolledTable.COLUMN_SYNCED + " is null OR " + EnrolledTable.COLUMN_SYNCED + " = ''";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
 
         String orderBy =
-                EligiblesTable._ID + " ASC";
+                EnrolledTable._ID + " ASC";
 
-        Collection<EligiblesContract> allEC = new ArrayList<>();
+        Collection<EnrolledContract> allEC = new ArrayList<>();
         try {
             c = db.query(
-                    EligiblesTable.TABLE_NAME,  // The table to query
+                    EnrolledTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -808,7 +808,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                EligiblesContract ec = new EligiblesContract();
+                EnrolledContract ec = new EnrolledContract();
                 allEC.add(ec.Hydrate(c));
             }
         } finally {
@@ -914,7 +914,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SYNCED,
                 FormsTable.COLUMN_SYNCED_DATE,
                 FormsTable.COLUMN_FORMTYPE,
-                FormsTable.COLUMN_PARTICIPNAT_ID,
+                FormsTable.COLUMN_SNO,
         };
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = ''";
         String[] whereArgs = null;

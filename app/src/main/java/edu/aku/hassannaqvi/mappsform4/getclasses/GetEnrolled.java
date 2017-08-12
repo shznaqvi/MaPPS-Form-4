@@ -26,18 +26,18 @@ import java.net.URL;
 
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.contracts.EligiblesContract;
+import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
 
 /**
  * Created by hassan.naqvi on 7/26/2016.
  */
-public class GetEligibles extends AsyncTask<Void, Void, String> {
+public class GetEnrolled extends AsyncTask<Void, Void, String> {
 
-    private static final String TAG = "GetEligibles";
+    private static final String TAG = "GetEnrolled";
     private Context mContext;
     private ProgressDialog pd;
 
-    public GetEligibles(Context context) {
+    public GetEnrolled(Context context) {
         mContext = context;
     }
 
@@ -53,7 +53,7 @@ public class GetEligibles extends AsyncTask<Void, Void, String> {
     protected void onPreExecute() {
         super.onPreExecute();
         pd = new ProgressDialog(mContext);
-        pd.setTitle("Please wait... Processing Eligibles");
+        pd.setTitle("Please wait... Processing Enrolleds");
         pd.show();
 
     }
@@ -64,7 +64,7 @@ public class GetEligibles extends AsyncTask<Void, Void, String> {
 
         String line = "No Response";
         try {
-            return downloadUrl(AppMain._HOST_URL + EligiblesContract.EligiblesTable._URIGET);
+            return downloadUrl(AppMain._HOST_URL_4 + EnrolledContract.EnrolledTable._URIGET);
         } catch (IOException e) {
             return "Unable to upload data. Server may be down.";
         }
@@ -79,18 +79,18 @@ public class GetEligibles extends AsyncTask<Void, Void, String> {
         try {
             json = new JSONArray(result);
             DatabaseHelper db = new DatabaseHelper(mContext);
-            db.syncEligibles(json);
-            Toast.makeText(mContext, "Successfully Synced " + json.length() + " Eligibles", Toast.LENGTH_SHORT).show();
+            db.syncEnrolled(json);
+            Toast.makeText(mContext, "Successfully Synced " + json.length() + " Enrolleds", Toast.LENGTH_SHORT).show();
 
-            pd.setMessage(json.length() + " eligibles synced.");
-            pd.setTitle("Eligibles: Done");
+            pd.setMessage(json.length() + " Enrolleds synced.");
+            pd.setTitle("Enrolleds: Done");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Eligibles Sync Failed");
+            pd.setTitle("Enrolleds Sync Failed");
             pd.show();
 
         }
@@ -125,9 +125,9 @@ public class GetEligibles extends AsyncTask<Void, Void, String> {
             JSONArray jsonSync = new JSONArray();
             DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
             DatabaseHelper db = new DatabaseHelper(mContext);
-                /*ollection<EligiblesContract> eligibles = db.getAllEligibles();
-                Log.d(TAG, String.valueOf(eligibles.size()));
-                for (EligiblesContract fc : eligibles) {
+                /*ollection<EnrolledContract> Enrolleds = db.getAllEnrolled();
+                Log.d(TAG, String.valueOf(Enrolleds.size()));
+                for (EnrolledContract fc : Enrolleds) {
 
                     jsonSync.put(fc.toJSONObject());
 
