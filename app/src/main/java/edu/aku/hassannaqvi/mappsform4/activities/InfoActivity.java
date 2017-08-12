@@ -46,17 +46,6 @@ public class InfoActivity extends Activity  {
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
 
-        /*if (AppMain.formType.equals("Form - 5"))
-        {
-            mp04a003.setEnabled(false);
-            mp04a004.setEnabled(false);
-            mp04a005.setEnabled(false);
-        }else{
-            mp04a003.setEnabled(true);
-            mp04a004.setEnabled(true);
-            mp04a005.setEnabled(true);
-        }*/
-
     }
 
     @OnClick(R.id.checkParticipants) void onCheckParticipantsClick() {
@@ -104,11 +93,15 @@ public class InfoActivity extends Activity  {
 
                 finish();
 
-                if (AppMain.formType.equals("Form - 4")) {
+                if (AppMain.formType.equals("Form - 4") && mp04a01301.isChecked()) {
                     Intent intent = new Intent(this, Form4Activity.class);
                     startActivity(intent);
-                } else {
+                } else if (AppMain.formType.equals("Form - 5") && mp04a01301.isChecked()) {
                     Intent intent = new Intent(this, Form5Activity.class);
+                    startActivity(intent);
+                } else if (mp04a01302.isChecked()) {
+                    Intent intent = new Intent(this, EndingActivity.class);
+                    intent.putExtra("complete", false);
                     startActivity(intent);
                 }
 
