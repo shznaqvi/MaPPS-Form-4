@@ -1036,6 +1036,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ParticipantsTable.COLUMN_HOUSEHOLD,
                 ParticipantsTable.COLUMN_LHWCODE,
                 ParticipantsTable.COLUMN_ISTATUS,
+                ParticipantsTable.COLUMN_ISTATUS,
                 ParticipantsTable.COLUMN_SCB,
                 ParticipantsTable.COLUMN_SCC,
                 ParticipantsTable.COLUMN_SCD,

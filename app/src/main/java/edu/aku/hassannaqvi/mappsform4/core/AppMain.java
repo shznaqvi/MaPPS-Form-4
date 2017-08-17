@@ -15,14 +15,12 @@ import android.view.View;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
-import edu.aku.hassannaqvi.mappsform4.other.TypefaceUtil;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.ParticipantsContract;
-import edu.aku.hassannaqvi.mappsform4.otherclasses.EligibleParticipants;
+import edu.aku.hassannaqvi.mappsform4.other.TypefaceUtil;
 
 /**
  * Created by hassan.naqvi on 11/30/2016.
@@ -37,10 +35,7 @@ public class AppMain extends Application {
     public static final String _PROJECT_FOLDER_2 = "mapps/form2/api/";
     public static final String _PROJECT_FOLDER_4 = "mapps/form4/api/";
 
-    public static final String _HOST_URL =
-            "http://" + _IP
-                    + ":" + _PORT
-                    + "/" + _PROJECT_FOLDER_2;
+    public static final String _HOST_URL = "http://" + _IP + ":" + _PORT + "/" + _PROJECT_FOLDER_2;
 
     public static final String _HOST_URL_4 =
             "http://" + _IP
