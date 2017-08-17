@@ -886,7 +886,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-    public Collection<FormsContract> getUnsyncedForms() {
+    public Collection<FormsContract> getUnsyncedForms4() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -916,7 +916,73 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_SNO,
         };
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = ''";
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
+                + FormsTable.COLUMN_FORMTYPE + " = '4'";
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsTable._ID + " ASC";
+
+        Collection<FormsContract> allFC = new ArrayList<FormsContract>();
+        try {
+            c = db.query(
+                    FormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FormsContract fc = new FormsContract();
+                allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+
+    public Collection<FormsContract> getUnsyncedForms5() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+                FormsTable.COLUMN_PROJECTNAME,
+                FormsTable.COLUMN_SURVEYTYPE,
+                FormsTable.COLUMN__ID,
+                FormsTable.COLUMN_UID,
+                FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_INTERVIEWER01,
+                FormsTable.COLUMN_INTERVIEWER02,
+                FormsTable.COLUMN_CLUSTERCODE,
+                FormsTable.COLUMN_VILLAGEACODE,
+                FormsTable.COLUMN_HOUSEHOLD,
+                FormsTable.COLUMN_LHWCODE,
+                FormsTable.COLUMN_ISTATUS,
+                FormsTable.COLUMN_SINFO,
+                FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_GPSLAT,
+                FormsTable.COLUMN_GPSLNG,
+                FormsTable.COLUMN_GPSTIME,
+                FormsTable.COLUMN_GPSACC,
+                FormsTable.COLUMN_APP_VERSION,
+                FormsTable.COLUMN_DEVICEID,
+                FormsTable.COLUMN_DEVICETAGID,
+                FormsTable.COLUMN_SYNCED,
+                FormsTable.COLUMN_SYNCED_DATE,
+                FormsTable.COLUMN_FORMTYPE,
+                FormsTable.COLUMN_SNO,
+        };
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
+                + FormsTable.COLUMN_FORMTYPE + " = '5'";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;

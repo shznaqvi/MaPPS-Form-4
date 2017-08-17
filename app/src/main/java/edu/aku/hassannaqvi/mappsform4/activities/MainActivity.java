@@ -31,12 +31,10 @@ import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.getclasses.GetEligibles;
-import edu.aku.hassannaqvi.mappsform4.R;
-import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetEnrolled;
 import edu.aku.hassannaqvi.mappsform4.otherclasses.FormsList;
-import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncForms;
+import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncForms4;
+import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncForms5;
 import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncParticipants;
 
 
@@ -119,7 +117,8 @@ public class MainActivity extends Activity {
 */
         DatabaseHelper db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
-        Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
+        Collection<FormsContract> unsyncedForms4 = db.getUnsyncedForms4();
+        Collection<FormsContract> unsyncedForms5 = db.getUnsyncedForms5();
 
 
         rSumText += "TODAY'S RECORDS SUMMARY\r\n";
@@ -174,8 +173,11 @@ public class MainActivity extends Activity {
             rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
             rSumText += "\r\n";
             rSumText += "\r\n";
-            rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
+            rSumText += "Unsynced Forms4: \t" + unsyncedForms4.size();
             rSumText += "\r\n";
+            rSumText += "Unsynced Forms5: \t" + unsyncedForms5.size();
+            rSumText += "\r\n";
+
         }
         Log.d(TAG, "onCreate: " + rSumText);
         recordSummary.setText(rSumText);
@@ -305,7 +307,8 @@ public class MainActivity extends Activity {
         Log.e(TAG, "syncServer: 2");
         if (networkInfo != null && networkInfo.isConnected()) {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms(this).execute();
+            new SyncForms4(this).execute();
+            new SyncForms5(this).execute();
 
             Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
             new SyncParticipants(this).execute();
