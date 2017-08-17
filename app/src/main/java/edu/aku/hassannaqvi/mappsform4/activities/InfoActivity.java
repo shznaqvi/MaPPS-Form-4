@@ -93,10 +93,10 @@ public class InfoActivity extends Activity  {
 
                 finish();
 
-                if (AppMain.formType.equals("Form - 4") && mp04a01301.isChecked()) {
+                if (AppMain.formType.equals("4") && mp04a01301.isChecked()) {
                     Intent intent = new Intent(this, Form4Activity.class);
                     startActivity(intent);
-                } else if (AppMain.formType.equals("Form - 5") && mp04a01301.isChecked()) {
+                } else if (AppMain.formType.equals("5") && mp04a01301.isChecked()) {
                     Intent intent = new Intent(this, Form5Activity.class);
                     startActivity(intent);
                 } else if (mp04a01302.isChecked()) {

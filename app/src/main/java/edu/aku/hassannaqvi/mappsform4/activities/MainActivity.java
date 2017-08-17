@@ -26,11 +26,11 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import edu.aku.hassannaqvi.mappsform4.R;
+import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
-import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetEligibles;
 import edu.aku.hassannaqvi.mappsform4.otherclasses.FormsList;
 import edu.aku.hassannaqvi.mappsform4.syncclasses.SyncForms;
@@ -182,7 +182,7 @@ public class MainActivity extends Activity {
 
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
-            AppMain.formType = "Form - 4";
+            AppMain.formType = "4";
             Intent oF = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(oF);
         } else {
@@ -205,7 +205,7 @@ public class MainActivity extends Activity {
                         editor.putString("tagName", m_Text);
                         editor.commit();
 
-                        AppMain.formType = "Form - 4";
+                        AppMain.formType = "4";
 
                         Intent oF = new Intent(MainActivity.this, InfoActivity.class);
                         startActivity(oF);
@@ -225,7 +225,7 @@ public class MainActivity extends Activity {
 
     public void openForm5(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
-            AppMain.formType = "Form - 5";
+            AppMain.formType = "5";
             Intent oF = new Intent(MainActivity.this, InfoActivity.class);
             startActivity(oF);
         } else {
@@ -245,7 +245,7 @@ public class MainActivity extends Activity {
                         editor.putString("tagName", m_Text);
                         editor.commit();
 
-                        AppMain.formType = "Form - 5";
+                        AppMain.formType = "5";
                         Intent oF = new Intent(MainActivity.this, InfoActivity.class);
                         startActivity(oF);
                     }
