@@ -916,9 +916,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_SNO,
         };
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
-                + FormsTable.COLUMN_FORMTYPE + " = '4'";
-        String[] whereArgs = null;
+/*        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
+                + FormsTable.COLUMN_FORMTYPE + " =?";*/
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
+        String[] whereArgs = new String[]{"4"};
         String groupBy = null;
         String having = null;
 
@@ -981,9 +982,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_SNO,
         };
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
-                + FormsTable.COLUMN_FORMTYPE + " = '5'";
-        String[] whereArgs = null;
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
+        String[] whereArgs = new String[]{"5"};
         String groupBy = null;
         String having = null;
 
