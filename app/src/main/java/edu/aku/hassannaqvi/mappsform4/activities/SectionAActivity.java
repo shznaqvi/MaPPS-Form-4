@@ -51,7 +51,7 @@ public class SectionAActivity extends Activity {
     Boolean flag = false;
     Boolean checked = false;
 
-    Collection<EligiblesContract> Econtract;
+    Collection<EnrolledContract> Econtract;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +150,7 @@ public class SectionAActivity extends Activity {
 
             mp02a003.setError(null);
 
-            Econtract = db.getEligiblesByHousehold(AppMain.curCluster, LHWs.get(mp02aLHWs.getSelectedItem().toString()), mp02a003.getText().toString());
+            Econtract = db.getEnrolledByHousehold(AppMain.curCluster, LHWs.get(mp02aLHWs.getSelectedItem().toString()), mp02a003.getText().toString());
 
             mp02_count.setText("Eligible Women found = " + Econtract.size());
 
@@ -159,8 +159,8 @@ public class SectionAActivity extends Activity {
 
                 AppMain.Eparticipant = new ArrayList<>();
 
-                for (EligiblesContract ec : Econtract) {
-                    AppMain.Eparticipant.add(new EligibleParticipants(ec.getLUID(), ec.getWomen_name(), ec.getDob()));
+                for (EnrolledContract ec : Econtract) {
+                    AppMain.Eparticipant.add(new EligibleParticipants(ec.getLUID(), ec.getWomen_name(), ec.getSno()));
                 }
 
                 Toast.makeText(this, "Participant Found", Toast.LENGTH_LONG).show();

@@ -19,9 +19,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
+import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.contracts.EligiblesContract;
 
 /**
  * Created by hassan.naqvi on 7/26/2016.
@@ -59,7 +59,7 @@ public class SyncEligibles extends AsyncTask<Void, Void, String> {
 
         String line = "No Response";
         try {
-            String url = AppMain._HOST_URL + EligiblesContract.EligiblesTable._URI;
+            String url = AppMain._HOST_URL + EnrolledContract.EnrolledTable._URI;
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -78,7 +78,7 @@ public class SyncEligibles extends AsyncTask<Void, Void, String> {
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1")) {
-                    db.updateEligibles(jsonObject.getString("id"));
+                    db.updateEnrolled(jsonObject.getString("id"));
                     sSynced++;
                 }
             }
@@ -103,7 +103,7 @@ public class SyncEligibles extends AsyncTask<Void, Void, String> {
         // web page content.
         //int len = 500;
         DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<EligiblesContract> eligibles = db.getUnsyncedEligibles();
+        Collection<EnrolledContract> eligibles = db.getUnsyncedEnrolled();
         Log.d(TAG, String.valueOf(eligibles.size()));
         if (eligibles.size() > 0) {
             try {
@@ -123,7 +123,7 @@ public class SyncEligibles extends AsyncTask<Void, Void, String> {
                 try {
                     DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
 
-                    for (EligiblesContract fc : eligibles) {
+                    for (EnrolledContract fc : eligibles) {
 
                         jsonSync.put(fc.toJSONObject());
 

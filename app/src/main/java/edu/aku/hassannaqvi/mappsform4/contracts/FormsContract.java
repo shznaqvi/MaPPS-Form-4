@@ -25,7 +25,7 @@ public class FormsContract {
     private String istatus = ""; // Interview Status
     private String lhwCode = ""; // lhwcode
     private String formType = "";
-    private String participantID = "";
+    private String sno = "";
     private String sInfo = "";
     private String sA = "";
     private String gpsLat = "";
@@ -41,11 +41,11 @@ public class FormsContract {
     public FormsContract() {
     }
 
-    public FormsContract(String formDate, String household, String istatus, String participantID, String formType ) {
+    public FormsContract(String formDate, String household, String istatus, String sno, String formType ) {
         this.formDate = formDate;
         this.household = household;
         this.istatus = istatus;
-        this.participantID = participantID;
+        this.sno = sno;
         this.formType = formType;
     }
 
@@ -58,12 +58,12 @@ public class FormsContract {
         this.formType = formType;
     }
 
-    public String getParticipantID() {
-        return participantID;
+    public String getSno() {
+        return sno;
     }
 
-    public void setParticipantID(String participantID) {
-        this.participantID = participantID;
+    public void setSno(String sno) {
+        this.sno = sno;
     }
 
     public String getProjectName() {
@@ -257,7 +257,7 @@ public class FormsContract {
         this.household = jsonObject.getString(FormsTable.COLUMN_HOUSEHOLD);
         this.lhwCode = jsonObject.getString(FormsTable.COLUMN_LHWCODE);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPNAT_ID);
+        this.sno = jsonObject.getString(FormsTable.COLUMN_SNO);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.sInfo = jsonObject.getString(FormsTable.COLUMN_SINFO);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
@@ -288,7 +288,7 @@ public class FormsContract {
         this.household = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HOUSEHOLD));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LHWCODE));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPNAT_ID));
+        this.sno = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SNO));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.sInfo = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SINFO));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
@@ -323,7 +323,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_HOUSEHOLD, this.household == null ? JSONObject.NULL : this.household);
         json.put(FormsTable.COLUMN_LHWCODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
-        json.put(FormsTable.COLUMN_PARTICIPNAT_ID, this.participantID == null ? JSONObject.NULL : this.participantID);
+        json.put(FormsTable.COLUMN_SNO, this.sno == null ? JSONObject.NULL : this.sno);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         try {
             if (!this.sInfo.equals("")) {
@@ -370,7 +370,7 @@ public class FormsContract {
         public static final String COLUMN_HOUSEHOLD = "household";
         public static final String COLUMN_LHWCODE = "lhwcode";
         public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_PARTICIPNAT_ID = "participantid";
+        public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_SINFO = "info";
         public static final String COLUMN_SA = "sa";
