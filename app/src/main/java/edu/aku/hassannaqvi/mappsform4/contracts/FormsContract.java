@@ -22,9 +22,11 @@ public class FormsContract {
     private String clustercode = "0000"; // Area Code
     private String villageacode = ""; // Sub-Area Code
     private String household = ""; // Household number
+    private String participantID = "";
     private String istatus = ""; // Interview Status
     private String lhwCode = ""; // lhwcode
     private String formType = ""; // formtype: F4, F5
+    private String sInfo = "";
     private String sA = "";
     private String gpsLat = "";
     private String gpsLng = "";
@@ -117,12 +119,28 @@ public class FormsContract {
         this.household = household;
     }
 
+    public String getParticipantID() {
+        return participantID;
+    }
+
+    public void setParticipantID(String participantID) {
+        this.participantID = participantID;
+    }
+
     public String getIstatus() {
         return istatus;
     }
 
     public void setIstatus(String istatus) {
         this.istatus = istatus;
+    }
+
+    public String getsInfo() {
+        return sInfo;
+    }
+
+    public void setsInfo(String sInfo) {
+        this.sInfo = sInfo;
     }
 
     public String getsA() {
@@ -233,6 +251,7 @@ public class FormsContract {
         this.clustercode = jsonObject.getString(FormsTable.COLUMN_CLUSTERCODE);
         this.villageacode = jsonObject.getString(FormsTable.COLUMN_VILLAGEACODE);
         this.household = jsonObject.getString(FormsTable.COLUMN_HOUSEHOLD);
+        this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANT_ID);
         this.lhwCode = jsonObject.getString(FormsTable.COLUMN_LHWCODE);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
@@ -262,6 +281,7 @@ public class FormsContract {
         this.clustercode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CLUSTERCODE));
         this.villageacode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGEACODE));
         this.household = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HOUSEHOLD));
+        this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANT_ID));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LHWCODE));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
@@ -295,6 +315,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_CLUSTERCODE, this.clustercode == null ? JSONObject.NULL : this.clustercode);
         json.put(FormsTable.COLUMN_VILLAGEACODE, this.villageacode == null ? JSONObject.NULL : this.villageacode);
         json.put(FormsTable.COLUMN_HOUSEHOLD, this.household == null ? JSONObject.NULL : this.household);
+        json.put(FormsTable.COLUMN_PARTICIPANT_ID, this.participantID == null ? JSONObject.NULL : this.participantID);
         json.put(FormsTable.COLUMN_LHWCODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
@@ -320,7 +341,6 @@ public class FormsContract {
         public static final String TABLE_NAME = "forms";
         public static final String _URL = "forms.php";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
-
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN_SURVEYTYPE = "surveytype";
         public static final String COLUMN__ID = "_id";
@@ -331,9 +351,11 @@ public class FormsContract {
         public static final String COLUMN_CLUSTERCODE = "clustercode";
         public static final String COLUMN_VILLAGEACODE = "villageacode";
         public static final String COLUMN_HOUSEHOLD = "household";
+        public static final String COLUMN_PARTICIPANT_ID = "participantid";
         public static final String COLUMN_LHWCODE = "lhwcode";
         public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_ISTATUS = "istatus";
+        public static final String COLUMN_SINFO = "sinfo";
         public static final String COLUMN_SA = "sa";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
