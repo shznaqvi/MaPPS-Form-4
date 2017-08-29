@@ -720,6 +720,7 @@ public class Form4Activity extends AppCompatActivity  {
             } else {
                 mp02d012id3_txt.setError(null);
             }
+        }
 
 
             if (mp04d001.getText().toString().isEmpty()) {
@@ -730,6 +731,15 @@ public class Form4Activity extends AppCompatActivity  {
             } else {
                 mp04d001.setError(null);
             }
+
+        if (Double.valueOf(mp04d001.getText().toString()) < 4 || Double.valueOf(mp04d001.getText().toString()) > 20) {
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp04d001), Toast.LENGTH_SHORT).show();
+            mp04d001.setError("Range is 4.0 to 20.0");
+            Log.i(TAG, "mp04d001: Range is 4.0 to 20.0");
+            return false;
+        } else {
+            mp04d001.setError(null);
+        }
 
 
             if (mp04e001.getCheckedRadioButtonId() == -1) {
@@ -750,9 +760,6 @@ public class Form4Activity extends AppCompatActivity  {
                 mp04e00203.setError(null);
             }
 
-
-
-        }
 
         return true;
     }
@@ -798,6 +805,10 @@ public class Form4Activity extends AppCompatActivity  {
 
         form4.put("mp04c012", mp02d012.getText().toString());
         form4.put("mp04c012id3", mp02d012id3.getSelectedItem().toString());
+
+        form4.put("mp04d001", mp04d001.getText().toString());
+        form4.put("mp04e001", mp04e00101.isChecked() ? "1" : mp04e00102.isChecked() ? "2" : "0");
+        form4.put("mp04e002", mp04e00201.isChecked() ? "1" : mp04e00202.isChecked() ? "2" : mp04e00203.isChecked() ? "3" : "0");
 
         AppMain.fc.setsA(String.valueOf(form4));
 
