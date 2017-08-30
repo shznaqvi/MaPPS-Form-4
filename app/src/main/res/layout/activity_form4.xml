@@ -49,9 +49,9 @@
             app:dateFormat="dd-MM-yyyy" />
 
         <CheckBox
+            android:id="@+id/mp04b00199"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp04b00199"
             android:text="@string/dkn"
             />
 
@@ -65,9 +65,9 @@
             android:textColor="@android:color/white" />
 
         <EditText
+            android:id="@+id/mp04b002"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp04b002"
             android:hint="@string/mp04b002a"
             android:inputType="number"
             android:maxLength="2"/>
@@ -268,7 +268,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <TextView
             android:layout_width="match_parent"
@@ -286,7 +287,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-
             android:text="@string/mp02d004"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
@@ -385,7 +385,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorAccent"
             android:gravity="center"
-            android:text="@string/mp02d"
+            android:text="@string/mp04d"
             android:textSize="30sp" />
 
         <View
@@ -404,11 +404,11 @@
             android:textColor="@android:color/white" />
 
         <EditText
+            android:id="@+id/mp04d001"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp04d001"
             android:hint="@string/mp04d001a"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:maxLength="4"/>
 
 
@@ -452,15 +452,15 @@
                 android:id="@+id/mp04e00101"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp04e00102"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 

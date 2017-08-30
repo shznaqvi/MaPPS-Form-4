@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_INTERVIEWER01 + " TEXT," +
             FormsTable.COLUMN_INTERVIEWER02 + " TEXT," +
             FormsTable.COLUMN_CLUSTERCODE + " TEXT," +
-            FormsTable.COLUMN_VILLAGEACODE + " TEXT," +
+            //FormsTable.COLUMN_VILLAGEACODE + " TEXT," +
             FormsTable.COLUMN_HOUSEHOLD + " TEXT," +
             FormsTable.COLUMN_LHWCODE + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
@@ -341,7 +341,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_INTERVIEWER01, fc.getInterviewer01());
         values.put(FormsTable.COLUMN_INTERVIEWER02, fc.getInterviewer02());
         values.put(FormsTable.COLUMN_CLUSTERCODE, fc.getClustercode());
-        values.put(FormsTable.COLUMN_VILLAGEACODE, fc.getVillageacode());
+        //values.put(FormsTable.COLUMN_VILLAGEACODE, fc.getVillageacode());
         values.put(FormsTable.COLUMN_HOUSEHOLD, fc.getHousehold());
         values.put(FormsTable.COLUMN_LHWCODE, fc.getLhwCode());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -834,7 +834,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_INTERVIEWER01,
                 FormsTable.COLUMN_INTERVIEWER02,
                 FormsTable.COLUMN_CLUSTERCODE,
-                FormsTable.COLUMN_VILLAGEACODE,
+                //FormsTable.COLUMN_VILLAGEACODE,
                 FormsTable.COLUMN_HOUSEHOLD,
                 FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_ISTATUS,
@@ -898,7 +898,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_INTERVIEWER01,
                 FormsTable.COLUMN_INTERVIEWER02,
                 FormsTable.COLUMN_CLUSTERCODE,
-                FormsTable.COLUMN_VILLAGEACODE,
+                //FormsTable.COLUMN_VILLAGEACODE,
                 FormsTable.COLUMN_HOUSEHOLD,
                 FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_ISTATUS,
@@ -964,7 +964,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_INTERVIEWER01,
                 FormsTable.COLUMN_INTERVIEWER02,
                 FormsTable.COLUMN_CLUSTERCODE,
-                FormsTable.COLUMN_VILLAGEACODE,
+                //FormsTable.COLUMN_VILLAGEACODE,
                 FormsTable.COLUMN_HOUSEHOLD,
                 FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_ISTATUS,
@@ -1162,7 +1162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = {
                 FormsTable._ID,
                 FormsTable.COLUMN_CLUSTERCODE,
-                FormsContract.FormsTable.COLUMN_VILLAGEACODE,
+                //FormsContract.FormsTable.COLUMN_VILLAGEACODE,
                 FormsContract.FormsTable.COLUMN_HOUSEHOLD,
         };
 
