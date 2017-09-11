@@ -88,17 +88,6 @@ public class InfoActivity extends Activity {
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
 
-        /*if (AppMain.formType.equals("Form - 5"))
-        {
-            mp04a003.setEnabled(false);
-            mp04a004.setEnabled(false);
-            mp04a005.setEnabled(false);
-        }else{
-            mp04a003.setEnabled(true);
-            mp04a004.setEnabled(true);
-            mp04a005.setEnabled(true);
-        }*/
-
         db = new DatabaseHelper(this);
 
         LHWsName = new ArrayList<>();
@@ -118,6 +107,7 @@ public class InfoActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.colorPrimary));
+                ((TextView) parent.getChildAt(0)).setTextSize(36);
                 Log.d("Selected LHWs", LHWs.get(lhws.getSelectedItem().toString()));
 
                 mp04a001.setText(null);
@@ -312,7 +302,9 @@ public class InfoActivity extends Activity {
         sInfo.put("mp04a003", mp04a003.getSelectedItem().toString());
         sInfo.put("mp04a004", mp04a004.getText().toString());
         sInfo.put("mp04a005", mp04a005.getText().toString());
-        sInfo.put("mp05a012", mp05a012.getText().toString());
+        if (AppMain.formType.equals("5")) {
+            sInfo.put("mp05a012", mp05a012.getText().toString());
+        }
         sInfo.put("mp04a13", mp04a01301.isChecked() ? "1" : mp04a01302.isChecked() ? "2" : "0");
 
         AppMain.fc.setsInfo(String.valueOf(sInfo));

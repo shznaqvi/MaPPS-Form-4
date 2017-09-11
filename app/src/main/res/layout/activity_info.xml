@@ -22,7 +22,7 @@
             android:background="@color/colorAccent"
             android:gravity="center"
             android:text="@string/Seca"
-            android:textSize="30sp" />
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
@@ -40,10 +40,13 @@
 
         <Spinner
             android:id="@+id/lhws"
+            style="@style/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:popupBackground="#ffffff" />
+            android:popupBackground="#ffffff"
+
+            />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,7 +64,6 @@
 
             <Button
                 android:id="@+id/checkParticipants"
-                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -71,6 +73,7 @@
                 android:padding="2dp"
                 android:text="CHECK"
                 android:textColor="@color/colorPrimary"
+                android:textSize="28sp"
                 android:textStyle="bold"
 
                 />
@@ -114,6 +117,7 @@
 
             <Spinner
                 android:id="@+id/mp04a003"
+                style="@style/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -244,7 +248,8 @@
                     android:layout_weight="1"
                     android:padding="2dp"
                     android:text="@string/end_interview"
-                    android:textColor="#ff1e1e" />
+                    android:textColor="#ff1e1e"
+                    android:textSize="32sp" />
 
                 <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->
 
@@ -255,6 +260,7 @@
                     android:padding="2dp"
                     android:text="@string/start_interview"
                     android:textColor="@color/colorPrimaryDark"
+                    android:textSize="32sp"
                     android:visibility="visible" />
                 <!--'onClick' for btn_Continue will call next section form e.g.: openSection2-->
 

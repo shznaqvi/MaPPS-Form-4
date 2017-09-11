@@ -22,7 +22,7 @@
             android:background="@color/colorAccent"
             android:gravity="center"
             android:text="@string/secb"
-            android:textSize="30sp" />
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
@@ -39,12 +39,13 @@
             android:textColor="@android:color/white" />
 
         <EditText
+            android:id="@+id/mp05b001"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp05b001"
             android:hint="@string/mm"
             android:inputType="numberDecimal"
-            android:maxLength="5"/>
+            android:maxLength="5"
+            android:textSize="32sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -62,13 +63,14 @@
             >
 
         <EditText
+            android:id="@+id/mp05b002w"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp05b002w"
+            android:layout_weight="1"
             android:hint="@string/mp04b002a"
             android:inputType="numberDecimal"
             android:maxLength="2"
-            android:layout_weight="1"/>
+            android:textSize="32sp" />
 
             <View
                 android:layout_width="2dp"
@@ -77,13 +79,14 @@
                 />
 
         <EditText
+            android:id="@+id/mp05b002d"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mp05b002d"
+            android:layout_weight="1"
             android:hint="@string/days"
             android:inputType="numberDecimal"
             android:maxLength="2"
-            android:layout_weight="1"/>
+            android:textSize="32sp" />
 
         </LinearLayout>
 
@@ -100,7 +103,7 @@
             android:background="@color/colorAccent"
             android:gravity="center"
             android:text="@string/secc"
-            android:textSize="30sp" />
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
@@ -126,15 +129,15 @@
                 android:id="@+id/mp05c00101"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp05c00102"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 
@@ -157,15 +160,15 @@
                 android:id="@+id/mp05c00201"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp05c00202"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 
@@ -189,15 +192,15 @@
                 android:id="@+id/mp05c00301"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp05c00302"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 
@@ -220,15 +223,15 @@
                 android:id="@+id/mp05c00401"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp05c00402"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 
@@ -251,15 +254,15 @@
                 android:id="@+id/mp05c00501"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/mp05c00502"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="@string/no" />
 
         </RadioGroup>
 
@@ -280,6 +283,7 @@
             android:focusable="false"
             android:hint="@string/mp05c006"
             android:textColor="@android:color/black"
+            android:textSize="32sp"
             app:dateFormat="dd-MM-yyyy" />
 
         <LinearLayout
@@ -295,7 +299,8 @@
                 android:layout_weight="1"
                 android:onClick="endInterview"
                 android:text="@string/end_interview"
-                android:textColor="#ff1e1e" />
+                android:textColor="#ff1e1e"
+                android:textSize="32sp" />
 
             <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->
 
@@ -305,7 +310,8 @@
                 android:layout_height="wrap_content"
                 android:onClick="startInterview"
                 android:text="@string/start_interview"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="32sp" />
             <!--'onClick' for btn_Continue will call next section form e.g.: openSection2-->
 
         </LinearLayout>

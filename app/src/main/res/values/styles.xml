@@ -8,6 +8,8 @@
         <item name="android:radioButtonStyle">@style/radiobutton</item>
         <item name="android:checkboxStyle">@style/chkBox</item>
         <item name="android:typeface">serif</item>
+        <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemStyle</item>
 
 
     </style>
@@ -18,6 +20,8 @@
         <item name="android:radioButtonStyle">@style/radiobutton</item>
         <item name="android:checkboxStyle">@style/chkBox</item>
         <item name="android:typeface">serif</item>
+        <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemStyle</item>
     </style>
 
 
@@ -39,7 +43,7 @@
         <item name="android:layout_height">wrap_content</item>
         <!--<item name="android:button">@null</item>-->
         <!--<item name="android:drawableRight">@android:drawable/btn_radio</item>-->
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">32sp</item>
 
 
     </style>
@@ -51,40 +55,38 @@
     <!--<style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">-->
     <!--</style>-->
 
-    <style name="SpinnerItem">
+    <style name="SpinnerItem" parent="@android:style/Widget.TextView.SpinnerItem">
         <item name="android:textAppearance">@style/SpinnerItemText</item>
     </style>
 
-    <style name="SpinnerItemText">
-        <item name="android:textSize">24sp</item>
+    <style name="SpinnerItemText" parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:textSize">32sp</item>
         <item name="android:typeface">serif</item>
     </style>
 
-    <style name="spinner">
+    <style name="spinner" parent="@android:style/Widget.Material.Light.Spinner">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">36sp</item>
         <item name="android:typeface">serif</item>
-        <item name="android:textColor">#ff0000</item>
-        <item name="android:background">#d6d6d6</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/black</item>
 
 
     </style>
 
-    <style name="spinnerItemStyle">
+    <style name="spinnerItemStyle" parent="@android:style/Widget.TextView.SpinnerItem">
         <item name="android:padding">10dp</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:typeface">serif</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="spinnerDropDownItemStyle">
-        <item name="android:padding">20dp</item>
-        <item name="android:textSize">24sp</item>
+    <style name="spinnerDropDownItemStyle" parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:textSize">28sp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
         <item name="android:typeface">serif</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="BackgroundStyle" parent="android:Widget.Material.Light.ScrollView">
@@ -93,7 +95,7 @@
 
     <style name="lblTextView" parent="android:Widget.Material.Light.TextView">
         <item name="android:paddingTop">16dp</item>
-        <item name="android:textSize">24sp</item> <!--or 16sp-->
+        <item name="android:textSize">32sp</item> <!--or 16sp-->
         <item name="android:elevation">1dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:layout_marginTop">16dp</item>
@@ -108,7 +110,7 @@
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:layout_marginTop">8dp</item>
-        <item name="android:textSize">20sp</item><!--or 16sp-->
+        <item name="android:textSize">32sp</item><!--or 16sp-->
         <item name="android:typeface">serif</item>
 
 
@@ -118,14 +120,14 @@
         <item name="android:background">@drawable/button_bg</item>
         <item name="android:padding">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:elevation">2dp</item>
 
 
     </style>
 
     <style name="chkBox" parent="android:Widget.Material.Light.CompoundButton.CheckBox">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColorPrimaryDisableOnly">@color/white</item>
 
 
