@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -133,9 +132,9 @@
                 android:id="@+id/mp04a002"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:hint="@string/mp04a002"
                 android:inputType="number"
-                android:enabled="false"
                 android:maxLength="9" />
 
             <TextView
@@ -172,6 +171,33 @@
                 android:inputType="number"
                 android:maxLength="11" />
 
+            <LinearLayout
+                android:id="@+id/fldGrpClinic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/ultcl"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/mp05a012"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:enabled="true"
+                    android:hint="@string/ultcl"
+                    android:inputType="textCapWords" />
+
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -203,6 +229,7 @@
                     android:text="@string/no" />
 
             </RadioGroup>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"

@@ -98,6 +98,7 @@
 
     <!-- Form 5 Strings-->
     <string name="secb">الٽراسائونڊ جي مطابق سوال جواب</string>
+    <string name="ultcl">الٽراسائونڊ ڪلينڪ جو نالو</string>
     <string name="mp05b001">الٽراسائونڊ جي مطابق ٻار جي مٿي کان پوئين حصي تائين جي ماپ ڪيتري آهي؟</string>
     <string name="mm">mm</string>
     <string name="days">days</string>

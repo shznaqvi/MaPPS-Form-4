@@ -28,7 +28,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,6 +74,10 @@ public class InfoActivity extends Activity {
 
     @BindView(R.id.fldGrpParticipant)
     LinearLayout fldGrpParticipant;
+    @BindView(R.id.mp05a012)
+    EditText mp05a012;
+    @BindView(R.id.fldGrpClinic)
+    LinearLayout fldGrpClinic;
 
     ArrayList<String> partNames;
     int position;
@@ -126,6 +129,13 @@ public class InfoActivity extends Activity {
 
             }
         });
+
+        if (AppMain.formType.equals("5")) {
+            fldGrpClinic.setVisibility(View.VISIBLE);
+        } else {
+            fldGrpClinic.setVisibility(View.GONE);
+            mp05a012.setText(null);
+        }
 
         mp04a003.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -302,6 +312,7 @@ public class InfoActivity extends Activity {
         sInfo.put("mp04a003", mp04a003.getSelectedItem().toString());
         sInfo.put("mp04a004", mp04a004.getText().toString());
         sInfo.put("mp04a005", mp04a005.getText().toString());
+        sInfo.put("mp05a012", mp05a012.getText().toString());
         sInfo.put("mp04a13", mp04a01301.isChecked() ? "1" : mp04a01302.isChecked() ? "2" : "0");
 
         AppMain.fc.setsInfo(String.valueOf(sInfo));
@@ -415,6 +426,20 @@ public class InfoActivity extends Activity {
         } else {
             mp04a005.setError(null);
         }
+
+        if (AppMain.formType.equals("5")) {
+            if (mp05a012.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.ultcl), Toast.LENGTH_SHORT).show();
+                mp05a012.setError("This data is Required!");
+
+                Log.i(TAG, "mp05a012: This Data is Required!");
+                return false;
+            } else {
+                mp05a012.setError(null);
+            }
+        }
+
+
 
         if (mp04a013.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.mp04a013), Toast.LENGTH_SHORT).show();
