@@ -20,7 +20,7 @@ public class FormsContract {
     private String interviewer01 = ""; // Interviewer 01
     private String interviewer02 = ""; // Interviewer 02
     private String clustercode = "0000"; // Area Code
-    //private String villageacode = ""; // Sub-Area Code
+    private String villageacode = ""; // Sub-Area Code
     private String household = ""; // Household number
     private String istatus = ""; // Interview Status
     private String lhwCode = ""; // lhwcode
@@ -122,14 +122,14 @@ public class FormsContract {
         this.clustercode = clustercode;
     }
 
-    /*public String getVillageacode() {
+    public String getVillageacode() {
         return villageacode;
     }
 
     public void setVillageacode(String villageacode) {
         this.villageacode = villageacode;
     }
-*/
+
     public String getHousehold() {
         return household;
     }
@@ -253,7 +253,7 @@ public class FormsContract {
         this.interviewer01 = jsonObject.getString(FormsTable.COLUMN_INTERVIEWER01);
         this.interviewer02 = jsonObject.getString(FormsTable.COLUMN_INTERVIEWER02);
         this.clustercode = jsonObject.getString(FormsTable.COLUMN_CLUSTERCODE);
-        //this.villageacode = jsonObject.getString(FormsTable.COLUMN_VILLAGEACODE);
+        this.villageacode = jsonObject.getString(FormsTable.COLUMN_VILLAGEACODE);
         this.household = jsonObject.getString(FormsTable.COLUMN_HOUSEHOLD);
         this.lhwCode = jsonObject.getString(FormsTable.COLUMN_LHWCODE);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
@@ -284,7 +284,7 @@ public class FormsContract {
         this.interviewer01 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INTERVIEWER01));
         this.interviewer02 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INTERVIEWER02));
         this.clustercode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_CLUSTERCODE));
-        //this.villageacode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGEACODE));
+        this.villageacode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_VILLAGEACODE));
         this.household = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HOUSEHOLD));
         this.lhwCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LHWCODE));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
@@ -319,7 +319,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_INTERVIEWER01, this.interviewer01 == null ? JSONObject.NULL : this.interviewer01);
         json.put(FormsTable.COLUMN_INTERVIEWER02, this.interviewer02 == null ? JSONObject.NULL : this.interviewer02);
         json.put(FormsTable.COLUMN_CLUSTERCODE, this.clustercode == null ? JSONObject.NULL : this.clustercode);
-        //json.put(FormsTable.COLUMN_VILLAGEACODE, this.villageacode == null ? JSONObject.NULL : this.villageacode);
+        json.put(FormsTable.COLUMN_VILLAGEACODE, this.villageacode == null ? JSONObject.NULL : this.villageacode);
         json.put(FormsTable.COLUMN_HOUSEHOLD, this.household == null ? JSONObject.NULL : this.household);
         json.put(FormsTable.COLUMN_LHWCODE, this.lhwCode == null ? JSONObject.NULL : this.lhwCode);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
@@ -366,7 +366,7 @@ public class FormsContract {
         public static final String COLUMN_INTERVIEWER01 = "interviewer01";
         public static final String COLUMN_INTERVIEWER02 = "interviewer02";
         public static final String COLUMN_CLUSTERCODE = "clustercode";
-        //public static final String COLUMN_VILLAGEACODE = "villageacode";
+        public static final String COLUMN_VILLAGEACODE = "villageacode";
         public static final String COLUMN_HOUSEHOLD = "household";
         public static final String COLUMN_LHWCODE = "lhwcode";
         public static final String COLUMN_ISTATUS = "istatus";

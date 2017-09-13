@@ -65,6 +65,8 @@ public class InfoActivity extends Activity {
     EditText mp04a004;
     @BindView(R.id.mp04a005)
     EditText mp04a005;
+    @BindView(R.id.mp04a007)
+    EditText mp04a007;
     @BindView(R.id.mp04a013)
     RadioGroup mp04a013;
     @BindView(R.id.mp04a01301)
@@ -291,7 +293,7 @@ public class InfoActivity extends Activity {
         AppMain.fc.setDeviceID(AppMain.deviceId);
         AppMain.fc.setSno(mp04a002.getText().toString());
         AppMain.fc.setFormType(AppMain.formType);
-        //AppMain.fc.setVillageacode(mp02a006.getText().toString());
+        AppMain.fc.setVillageacode(mp04a007.getText().toString());
 
         AppMain.fc.setLhwCode(AppMain.Eparticipant.get(position).getLhwCode());
 
@@ -409,6 +411,16 @@ public class InfoActivity extends Activity {
             mp04a004.setError(null);
         }
 
+        if (mp04a007.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.mp02a006), Toast.LENGTH_SHORT).show();
+            mp04a007.setError("This data is Required!");
+
+            Log.i(TAG, "mp04a007: This Data is Required!");
+            return false;
+        } else {
+            mp04a007.setError(null);
+        }
+
         if (mp04a005.getText().toString().isEmpty()) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.mp04a005), Toast.LENGTH_SHORT).show();
             mp04a005.setError("This data is Required!");
@@ -418,6 +430,7 @@ public class InfoActivity extends Activity {
         } else {
             mp04a005.setError(null);
         }
+
 
         if (AppMain.formType.equals("5")) {
             if (mp05a012.getText().toString().isEmpty()) {
