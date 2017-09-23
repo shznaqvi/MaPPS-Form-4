@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -96,11 +97,13 @@ public class InfoActivity extends Activity {
 
         LHWs = new HashMap<>();
 
-        Collection<LHWsContract> collectionLHWs = db.getLHWsByCluster(AppMain.curCluster);
+        final Collection<LHWsContract> collectionLHWs = db.getLHWsByCluster(AppMain.curCluster);
 
         for (LHWsContract lhws : collectionLHWs) {
             LHWsName.add(lhws.getLhwName());
+            Collections.sort(LHWsName);
             LHWs.put(lhws.getLhwName(), lhws.getLhwId());
+
         }
         lhws.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, LHWsName));
 
@@ -108,9 +111,11 @@ public class InfoActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
                 ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.colorPrimary));
                 ((TextView) parent.getChildAt(0)).setTextSize(36);
                 Log.d("Selected LHWs", LHWs.get(lhws.getSelectedItem().toString()));
+
 
                 mp04a001.setText(null);
 
@@ -296,6 +301,7 @@ public class InfoActivity extends Activity {
         AppMain.fc.setVillageacode(mp04a007.getText().toString());
 
         AppMain.fc.setLhwCode(AppMain.Eparticipant.get(position).getLhwCode());
+        AppMain.fc.setApp_version(AppMain.versionName + "." + AppMain.versionCode);
 
 
         JSONObject sInfo = new JSONObject();

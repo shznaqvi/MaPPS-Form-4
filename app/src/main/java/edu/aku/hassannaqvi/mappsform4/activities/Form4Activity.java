@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,9 +81,11 @@ public class Form4Activity extends AppCompatActivity  {
         ButterKnife.bind(this);
 
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
+        String maxDate9Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_9Months) + AppMain.MILLISECONDS_IN_DAY));
 
         mp04b001.setManager(getSupportFragmentManager());
         mp04b001.setMaxDate(dateToday);
+        mp04b001.setMinDate(maxDate9Months);
 
         mp04b00199.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -392,10 +395,10 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d005.setError(null);
-                    if (Double.parseDouble(mp02d005.getText().toString()) < 5 || Double.parseDouble(mp02d005.getText().toString()) > 170) {
+                    if (Double.parseDouble(mp02d005.getText().toString()) < 35 || Double.parseDouble(mp02d005.getText().toString()) > 170) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d005), Toast.LENGTH_SHORT).show();
-                        mp02d005.setError("Invalid: Range 5-170");
-                        Log.i(TAG, "mp02d005: Invalid Range 5-170");
+                        mp02d005.setError("Invalid: Range 35-170");
+                        Log.i(TAG, "mp02d005: Invalid Range 35-170");
                         return false;
                     } else {
                         mp02d005.setError(null);
@@ -437,10 +440,10 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d006.setError(null);
-                    if (Double.parseDouble(mp02d006.getText().toString()) < 5 || Double.parseDouble(mp02d006.getText().toString()) > 170) {
+                    if (Double.parseDouble(mp02d006.getText().toString()) < 35 || Double.parseDouble(mp02d006.getText().toString()) > 170) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d006), Toast.LENGTH_SHORT).show();
-                        mp02d006.setError("Invalid: Range 5-170");
-                        Log.i(TAG, "mp02d006: Invalid Range 5-170");
+                        mp02d006.setError("Invalid: Range 35-170");
+                        Log.i(TAG, "mp02d006: Invalid Range 35-170");
                         return false;
                     } else {
                         mp02d006.setError(null);
