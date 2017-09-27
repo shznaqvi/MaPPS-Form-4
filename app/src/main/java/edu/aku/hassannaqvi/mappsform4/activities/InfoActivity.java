@@ -129,8 +129,10 @@ public class InfoActivity extends Activity {
 
         if (AppMain.formType.equals("5")) {
             fldGrpClinic.setVisibility(View.VISIBLE);
-        } else {
+            this.setTitle(getResources().getString(R.string.app_name5));
+        } else if (AppMain.formType.equals("4")) {
             fldGrpClinic.setVisibility(View.GONE);
+            this.setTitle(getResources().getString(R.string.app_name4));
             mp05a012.setText(null);
         }
 

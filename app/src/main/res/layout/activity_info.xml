@@ -275,7 +275,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="@string/start_interview"
+                    android:text="@string/nextSection"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="32sp"
                     android:visibility="visible" />

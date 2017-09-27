@@ -103,7 +103,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="16dp"
             android:onClick="syncDevice"
-            android:text="Download LHW'S Data"
+            android:text="Download Enrollment Data"
             android:textSize="28sp" />
 
         <LinearLayout
