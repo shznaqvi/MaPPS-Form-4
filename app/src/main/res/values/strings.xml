@@ -110,10 +110,14 @@
 
     <string name="secc">الٽراسائونڊ جو مشاهدو</string>
     <string name="mp05c001">ڇا ٻار صاف نظر ايندڙ آهي؟</string>
+    <string name="mp05c00103">Film not available</string>
     <string name="mp05c002">ڇا ٻار ٻچيداني ۾ موجود آهي؟</string>
+    <string name="mp05c00203">Not mentioned</string>
     <string name="mp05c003">ڇا هڪ کان وڌيڪ ٻار آهن؟</string>
     <string name="mp05c004">ڇا ٻار جي دل حرڪت ڪري ٿي؟</string>
     <string name="mp05c005">ڇا ٻار ۾ ڪو نقص آهي؟</string>
+    <string name="mp05c005x">Specify..</string>
     <string name="mp05c006">Expected date of delivery</string>
+    <string name="mp05c007">Date of Ultrasound</string>
 
 </resources>

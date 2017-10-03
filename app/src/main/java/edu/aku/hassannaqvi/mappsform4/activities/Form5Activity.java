@@ -2,8 +2,10 @@ package edu.aku.hassannaqvi.mappsform4.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,19 +37,34 @@ public class Form5Activity extends AppCompatActivity  {
     @BindView(R.id.mp05c001) RadioGroup mp05c001;
     @BindView(R.id.mp05c00101) RadioButton mp05c00101;
     @BindView(R.id.mp05c00102) RadioButton mp05c00102;
+    @BindView(R.id.mp05c00103)
+    RadioButton mp05c00103;
     @BindView(R.id.mp05c002) RadioGroup mp05c002;
     @BindView(R.id.mp05c00201) RadioButton mp05c00201;
     @BindView(R.id.mp05c00202) RadioButton mp05c00202;
+    @BindView(R.id.mp05c00203)
+    RadioButton mp05c00203;
     @BindView(R.id.mp05c003) RadioGroup mp05c003;
     @BindView(R.id.mp05c00301) RadioButton mp05c00301;
     @BindView(R.id.mp05c00302) RadioButton mp05c00302;
+    @BindView(R.id.mp05c00303)
+    RadioButton mp05c00303;
     @BindView(R.id.mp05c004) RadioGroup mp05c004;
     @BindView(R.id.mp05c00401) RadioButton mp05c00401;
     @BindView(R.id.mp05c00402) RadioButton mp05c00402;
+    @BindView(R.id.mp05c00403)
+    RadioButton mp05c00403;
     @BindView(R.id.mp05c005) RadioGroup mp05c005;
     @BindView(R.id.mp05c00501) RadioButton mp05c00501;
     @BindView(R.id.mp05c00502) RadioButton mp05c00502;
+    @BindView(R.id.mp05c00503)
+    RadioButton mp05c00503;
+    @BindView(R.id.mp05c005x)
+    EditText mp05c005x;
     @BindView(R.id.mp05c006) DatePickerInputEditText mp05c006;
+    @BindView(R.id.mp05c007)
+    DatePickerInputEditText mp05c007;
+
 
     String dateToday;
 
@@ -55,11 +73,30 @@ public class Form5Activity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form5);
         ButterKnife.bind(this);
-
+        String maxDate9Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_9Months) + AppMain.MILLISECONDS_IN_DAY));
+        String maxDate8Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_8Months) + AppMain.MILLISECONDS_IN_DAY));
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
 
         mp05c006.setManager(getSupportFragmentManager());
         mp05c006.setMinDate(dateToday);
+        mp05c006.setMaxDate(maxDate9Months);
+        mp05c007.setManager(getSupportFragmentManager());
+        mp05c007.setMaxDate(dateToday);
+        mp05c007.setMinDate(maxDate8Months);
+
+
+        mp05c005.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if (mp05c00501.isChecked()) {
+                    mp05c005x.setVisibility(View.VISIBLE);
+                } else {
+                    mp05c005x.setVisibility(View.GONE);
+                    mp05c005x.setText(null);
+                }
+            }
+        });
 
     }
 
@@ -203,12 +240,23 @@ public class Form5Activity extends AppCompatActivity  {
         }
 
         if (mp05c005.getCheckedRadioButtonId() == -1 ) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c005), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c005x), Toast.LENGTH_SHORT).show();
             mp05c00501.setError("This data is Required!");
-            Log.i(TAG, "mp05c005: This data is Required!");
+            Log.i(TAG, "mp05c00501: This data is Required!");
             return false;
         } else {
             mp05c00501.setError(null);
+        }
+
+        if (mp05c00501.isChecked()) {
+            if (mp05c005x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c005x), Toast.LENGTH_SHORT).show();
+                mp05c005x.setError("This data is Required!");
+                Log.i(TAG, "mp05c005x: This data is Required!");
+                return false;
+            } else {
+                mp05c005x.setError(null);
+            }
         }
 
         if (mp05c006.getText().toString().isEmpty()) {
@@ -218,6 +266,15 @@ public class Form5Activity extends AppCompatActivity  {
             return false;
         } else {
             mp05c006.setError(null);
+        }
+
+        if (mp05c007.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c007), Toast.LENGTH_SHORT).show();
+            mp05c007.setError("This data is Required!");
+            Log.i(TAG, "mp05c007: This data is Required!");
+            return false;
+        } else {
+            mp05c007.setError(null);
         }
 
 
@@ -233,12 +290,13 @@ public class Form5Activity extends AppCompatActivity  {
         form5.put("mp05b001", mp05b001.getText().toString());
         form5.put("mp05b002w", mp05b002w.getText().toString());
         form5.put("mp05b002d", mp05b002d.getText().toString());
-        form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : "0");
-        form5.put("mp05c002", mp05c00201.isChecked() ? "1" : mp05c00202.isChecked() ? "2" : "0");
-        form5.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : "0");
-        form5.put("mp05c004", mp05c00401.isChecked() ? "1" : mp05c00402.isChecked() ? "2" : "0");
-        form5.put("mp05c005", mp05c00501.isChecked() ? "1" : mp05c00502.isChecked() ? "2" : "0");
+        form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : mp05c00103.isChecked() ? "3" : "0");
+        form5.put("mp05c002", mp05c00201.isChecked() ? "1" : mp05c00202.isChecked() ? "2" : mp05c00203.isChecked() ? "3" : "0");
+        form5.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : mp05c00303.isChecked() ? "3" : "0");
+        form5.put("mp05c004", mp05c00401.isChecked() ? "1" : mp05c00402.isChecked() ? "2" : mp05c00403.isChecked() ? "3" : "0");
+        form5.put("mp05c005", mp05c00501.isChecked() ? "1" : mp05c00502.isChecked() ? "2" : mp05c00503.isChecked() ? "3" : "0");
         form5.put("mp05c006", mp05c006.getText().toString());
+        form5.put("mp05c007", mp05c007.getText().toString());
 
 
         AppMain.fc.setsA(String.valueOf(form5));

@@ -62,6 +62,8 @@ public class AppMain extends Application {
     public static final long MILLISECONDS_IN_YEAR = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_YEAR;
     private static final long DAYS_IN_9Months = 273;
     public static final long MILLISECONDS_IN_9Months = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_9Months;
+    private static final long DAYS_IN_8Months = 243;
+    public static final long MILLISECONDS_IN_8Months = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_8Months;
 
     private static final String TAG = AppMain.class.getSimpleName();
     public static int NoMembers = 7;
@@ -88,6 +90,7 @@ public class AppMain extends Application {
     public static int partiFlag = 0;
     public static int maritalStatus = 0;
     public static int currentAge = 0;
+    public static String lmp;
 
     protected LocationManager locationManager;
     //    Login Members Array

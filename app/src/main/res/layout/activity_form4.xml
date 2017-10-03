@@ -432,6 +432,12 @@
             android:maxLength="4"
             android:textSize="32sp" />
 
+        <CheckBox
+            android:id="@+id/mp04d00177"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/na"/>
+
 
         <View
             android:layout_width="match_parent"
