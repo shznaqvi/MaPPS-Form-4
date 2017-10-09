@@ -42,6 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT );";
+
     public static final String DATABASE_NAME = "mapps_f2.db";
     private static final int DATABASE_VERSION = 1;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
@@ -1154,6 +1155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
+
 
     public Collection<FormsContract> getTodayForms() {
 

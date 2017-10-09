@@ -31,7 +31,12 @@ public class Form5Activity extends AppCompatActivity  {
     private static final String TAG = Form5Activity.class.getSimpleName();
 
     @BindView(R.id.app_header) TextView appHeader;
-    @BindView(R.id.mp05b001) EditText mp05b001;
+    @BindView(R.id.mp05b00101)
+    EditText mp05b00101;
+    @BindView(R.id.mp05b00102)
+    EditText mp05b00102;
+    @BindView(R.id.mp05b00103)
+    EditText mp05b00103;
     @BindView(R.id.mp05b002w) EditText mp05b002w;
     @BindView(R.id.mp05b002d) EditText mp05b002d;
     @BindView(R.id.mp05c001) RadioGroup mp05c001;
@@ -152,24 +157,81 @@ public class Form5Activity extends AppCompatActivity  {
 
     public boolean ValidateForm() {
 
-        if (mp05b001.getText().toString().isEmpty() ) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b001), Toast.LENGTH_SHORT).show();
-            mp05b001.setError("This data is Required!");
-            Log.i(TAG, "mp05b001: This data is Required!");
+        if (mp05b00101.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
+            mp05b00101.setError("This data is Required!");
+            Log.i(TAG, "mp05b00101: This data is Required!");
             return false;
         } else {
-            mp05b001.setError(null);
+            mp05b00101.setError(null);
+            if (!mp05b00101.getText().toString().contains(".")) {
+                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
+                mp05b00101.setError("Invalid: Decimal value is Required!");
+                Log.i(TAG, "mp05b00101: Invalid Decimal value is Required!");
+                return false;
+            } else {
+                mp05b00101.setError(null);
+                if (Double.parseDouble(mp05b00101.getText().toString()) < 0.3 || Double.parseDouble(mp05b00101.getText().toString()) > 0.9) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
+                    mp05b00101.setError("Invalid: Range 0.3-0.9");
+                    Log.i(TAG, "mp05b00101: Invalid Range 0.3-0.9");
+                    return false;
+                } else {
+                    mp05b00101.setError(null);
+                }
+            }
         }
 
-        if (Integer.valueOf(mp05b001.getText().toString().isEmpty() ? "0" : mp05b001.getText().toString()) < 3
-                || Integer.valueOf(mp05b001.getText().toString().isEmpty() ? "0" : mp05b001.getText().toString()) > 90) {
-            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
-            mp05b001.setError("Range is 3 mm to 90 mm");
-            Log.i(TAG, "mp05b001: Range is 3 mm to 90 mm");
+        if (mp05b00102.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
+            mp05b00102.setError("This data is Required!");
+            Log.i(TAG, "mp05b00102: This data is Required!");
             return false;
         } else {
-            mp05b001.setError(null);
+            mp05b00102.setError(null);
+            if (!mp05b00102.getText().toString().contains(".")) {
+                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
+                mp05b00102.setError("Invalid: Decimal value is Required!");
+                Log.i(TAG, "mp05b00102: Invalid Decimal value is Required!");
+                return false;
+            } else {
+                mp05b00102.setError(null);
+                if (Double.parseDouble(mp05b00102.getText().toString()) < 2.0 || Double.parseDouble(mp05b00102.getText().toString()) > 9.9) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
+                    mp05b00102.setError("Invalid: Range 2.0-9.9");
+                    Log.i(TAG, "mp05b00102: Invalid Range 2.0-9.9");
+                    return false;
+                } else {
+                    mp05b00102.setError(null);
+                }
+            }
         }
+
+        if (mp05b00103.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
+            mp05b00103.setError("This data is Required!");
+            Log.i(TAG, "mp05b00103: This data is Required!");
+            return false;
+        } else {
+            mp05b00103.setError(null);
+            if (!mp05b00103.getText().toString().contains(".")) {
+                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
+                mp05b00103.setError("Invalid: Decimal value is Required!");
+                Log.i(TAG, "mp05b00103: Invalid Decimal value is Required!");
+                return false;
+            } else {
+                mp05b00103.setError(null);
+                if (Double.parseDouble(mp05b00103.getText().toString()) < 1.0 || Double.parseDouble(mp05b00103.getText().toString()) > 9.0) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
+                    mp05b00103.setError("Invalid: Range 1.0-9.0");
+                    Log.i(TAG, "mp05b00103: Invalid Range 1.0-9.0");
+                    return false;
+                } else {
+                    mp05b00103.setError(null);
+                }
+            }
+        }
+
 
 
         if (mp05b002d.getText().toString().isEmpty() && mp05b002w.getText().toString().isEmpty()) {
@@ -287,7 +349,9 @@ public class Form5Activity extends AppCompatActivity  {
 
         JSONObject form5 = new JSONObject();
 
-        form5.put("mp05b001", mp05b001.getText().toString());
+        form5.put("mp05b00101", mp05b00101.getText().toString());
+        form5.put("mp05b00102", mp05b00102.getText().toString());
+        form5.put("mp05b00103", mp05b00103.getText().toString());
         form5.put("mp05b002w", mp05b002w.getText().toString());
         form5.put("mp05b002d", mp05b002d.getText().toString());
         form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : mp05c00103.isChecked() ? "3" : "0");

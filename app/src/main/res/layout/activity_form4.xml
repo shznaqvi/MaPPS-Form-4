@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/mp02d005"
         android:inputType="numberDecimal"
-        android:maxLength="5"
+        android:maxLength="2"
         android:textSize="32sp" />
 
     <Spinner
@@ -166,16 +166,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
 
-    <EditText
-        android:id="@+id/mp02d009"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/mp02d009"
-        android:inputType="numberDecimal"
-        android:maxLength="4"
-        android:textSize="32sp" />
+        <EditText
+            android:id="@+id/mp02d009"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mp02d009"
+            android:inputType="numberDecimal"
+            android:maxLength="4"
+            android:textSize="32sp" />
 
-    <Spinner
+        <Spinner
         android:id="@+id/mp02d009id1"
         style="@style/spinner"
         android:layout_width="match_parent"
@@ -203,16 +203,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
 
-    <EditText
-        android:id="@+id/mp02d002"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/mp02d002"
-        android:inputType="numberDecimal"
-        android:maxLength="5"
-        android:textSize="32sp" />
+        <EditText
+            android:id="@+id/mp02d002"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mp02d002"
+            android:inputType="numberDecimal"
+            android:maxLength="5"
+            android:textSize="32sp" />
 
-    <Spinner
+        <Spinner
         android:id="@+id/mp02d002id2"
         style="@style/spinner"
         android:layout_width="match_parent"
@@ -238,7 +238,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/mp02d006"
         android:inputType="numberDecimal"
-        android:maxLength="5"
+        android:maxLength="2"
         android:textSize="32sp" />
 
     <Spinner
@@ -346,7 +346,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/mp02d008"
             android:inputType="numberDecimal"
-            android:maxLength="5"
+            android:maxLength="2"
             android:textSize="32sp" />
 
         <Spinner

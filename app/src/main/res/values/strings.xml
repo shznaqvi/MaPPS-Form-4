@@ -104,7 +104,10 @@
     <string name="secb">الٽراسائونڊ جي مطابق سوال جواب</string>
     <string name="ultcl">الٽراسائونڊ ڪلينڪ جو نالو</string>
     <string name="mp05b001">الٽراسائونڊ جي مطابق ٻار جي مٿي کان پوئين حصي تائين جي ماپ ڪيتري آهي؟</string>
-    <string name="mm">mm</string>
+    <string name="mp05b00101">CRL</string>
+    <string name="mp05b00102">BPD</string>
+    <string name="mp05b00103">FL</string>
+    <string name="cm">cm </string>
     <string name="days">days</string>
     <string name="mp05b002">ٻار جي عمر اندازن مٿي کان پوئين حصي جي ماپ مطابق ڪيتري آهي؟</string>
 
