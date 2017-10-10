@@ -62,9 +62,9 @@ public class Form4Activity extends AppCompatActivity  {
     @BindView(R.id.mp02d012) EditText mp02d012;
     @BindView(R.id.mp02d012id3) Spinner mp02d012id3;
     @BindView(R.id.mp04d001) EditText mp04d001;
-    @BindView(R.id.mp04e001) RadioGroup mp04e001;
-    @BindView(R.id.mp04e00101) RadioButton mp04e00101;
-    @BindView(R.id.mp04e00102) RadioButton mp04e00102;
+    /* @BindView(R.id.mp04e001) RadioGroup mp04e001;
+     @BindView(R.id.mp04e00101) RadioButton mp04e00101;
+     @BindView(R.id.mp04e00102) RadioButton mp04e00102;*/
     @BindView(R.id.mp04e002) RadioGroup mp04e002;
     @BindView(R.id.mp04e00201) RadioButton mp04e00201;
     @BindView(R.id.mp04e00202) RadioButton mp04e00202;
@@ -762,14 +762,14 @@ public class Form4Activity extends AppCompatActivity  {
         }
 
 
-            if (mp04e001.getCheckedRadioButtonId() == -1) {
+            /*if (mp04e001.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp04e001), Toast.LENGTH_SHORT).show();
                 mp04e00102.setError("This data is Required!");
                 Log.i(TAG, "mp04e001: This data is Required!");
                 return false;
             } else {
                 mp04e00102.setError(null);
-            }
+            }*/
 
             if (mp04e002.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp04e002), Toast.LENGTH_SHORT).show();
@@ -827,7 +827,7 @@ public class Form4Activity extends AppCompatActivity  {
         form4.put("mp04c012id3", mp02d012id3.getSelectedItem().toString());
 
         form4.put("mp04d001", mp04d00177.isChecked() ? "77" : mp04d001.getText().toString());
-        form4.put("mp04e001", mp04e00101.isChecked() ? "1" : mp04e00102.isChecked() ? "2" : "0");
+        // form4.put("mp04e001", mp04e00101.isChecked() ? "1" : mp04e00102.isChecked() ? "2" : "0");
         form4.put("mp04e002", mp04e00201.isChecked() ? "1" : mp04e00202.isChecked() ? "2" : mp04e00203.isChecked() ? "3" : "0");
 
         AppMain.fc.setsA(String.valueOf(form4));
