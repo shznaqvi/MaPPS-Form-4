@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/mp02d005"
         android:inputType="numberDecimal"
-        android:maxLength="2"
+        android:maxLength="4"
         android:textSize="32sp" />
 
     <Spinner
@@ -238,7 +238,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/mp02d006"
         android:inputType="numberDecimal"
-        android:maxLength="2"
+        android:maxLength="4"
         android:textSize="32sp" />
 
     <Spinner
@@ -346,7 +346,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/mp02d008"
             android:inputType="numberDecimal"
-            android:maxLength="2"
+            android:maxLength="4"
             android:textSize="32sp" />
 
         <Spinner

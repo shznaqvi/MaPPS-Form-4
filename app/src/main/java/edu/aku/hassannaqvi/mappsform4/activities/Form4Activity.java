@@ -410,7 +410,7 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d005.setError(null);
-                    if (Double.parseDouble(mp02d005.getText().toString()) < 33 || Double.parseDouble(mp02d005.getText().toString()) > 99) {
+                    if (Double.parseDouble(mp02d005.getText().toString()) < 30 || Double.parseDouble(mp02d005.getText().toString()) > 99) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d005), Toast.LENGTH_SHORT).show();
                         mp02d005.setError("Invalid: Range 33-99");
                         Log.i(TAG, "mp02d005: Invalid Range 33-99");
@@ -455,7 +455,7 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d006.setError(null);
-                    if (Double.parseDouble(mp02d006.getText().toString()) < 33 || Double.parseDouble(mp02d006.getText().toString()) > 99) {
+                    if (Double.parseDouble(mp02d006.getText().toString()) < 30 || Double.parseDouble(mp02d006.getText().toString()) > 99) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d006), Toast.LENGTH_SHORT).show();
                         mp02d006.setError("Invalid: Range 33-99");
                         Log.i(TAG, "mp02d006: Invalid Range 33-99");
@@ -541,7 +541,7 @@ public class Form4Activity extends AppCompatActivity  {
                         return false;
                     } else {
                         mp02d008.setError(null);
-                        if (Double.parseDouble(mp02d008.getText().toString()) < 33 || Double.parseDouble(mp02d008.getText().toString()) > 99) {
+                        if (Double.parseDouble(mp02d008.getText().toString()) < 30 || Double.parseDouble(mp02d008.getText().toString()) > 99) {
                             Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d008), Toast.LENGTH_SHORT).show();
                             mp02d008.setError("Invalid: Range 5-170");
                             Log.i(TAG, "mp02d008: Invalid Range 5-170");
