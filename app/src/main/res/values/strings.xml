@@ -64,6 +64,7 @@
     <string name="mp04a01403"> انڪار ڪيو </string>
     <string name="mp04a01404"> ٻن دورن کان پوء به ڪير به موجوده نه هو </string>
     <string name="mp04a01405"> لڏي وئي </string>
+    <string name="mp04a01406">Ultrasound not done </string>
 
     <string name="mp04b001">توهان جي آخري ماهواري جو پهريون ڏينهن ڪهڙو هيو؟</string>
     <string name="lmp">آخري ماهواري جي تاريخ</string>
@@ -97,8 +98,8 @@
     <string name="mp04e">الٽرا سائونڊ لاءِ موڪليو</string>
     <string name="mp04e001"> ڇا شرڪت ڪندڙ کي الٽرا سائونڊ لاء چيو ويو آهي .؟</string>
     <string name="mp04e002sub"> If the participant states that she has not been referred for an ultrasound, refer her for an ultrasound at the closest facility to <her></her> </string>
-    <string name="mp04e002"> Has the participant gotten an ultrasound done yet? </string>
-    <string name="mp04e00202">Just referred</string>
+    <string name="mp04e002"> ڇا شرڪت ڪندڙ هينئر تائين الٽراسائونڊ ڪرايو آهي؟ </string>
+    <string name="mp04e00202">صلاح ڏني وئي آهي الٽراسائونڊ ڪرائڻ لاء</string>
 
     <!-- Form 5 Strings-->
     <string name="secb">الٽراسائونڊ جي مطابق سوال جواب</string>

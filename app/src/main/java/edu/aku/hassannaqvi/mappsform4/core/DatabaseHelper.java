@@ -63,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SINFO + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
+            FormsTable.COLUMN_ENDINGDATETIME + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
             FormsTable.COLUMN_GPSTIME + " TEXT," +
@@ -350,6 +351,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_SINFO, fc.getsInfo());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
+        values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingDateTime());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
         values.put(FormsTable.COLUMN_GPSTIME, fc.getGpsTime());
@@ -583,6 +585,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_ISTATUS, AppMain.fc.getIstatus());
+        values.put(FormsTable.COLUMN_ENDINGDATETIME, AppMain.fc.getEndingDateTime());
 
 // Which row to update, based on the ID
         String selection = " _ID = " + AppMain.fc.getID();
@@ -842,6 +845,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSTIME,
@@ -905,6 +909,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSTIME,
@@ -971,6 +976,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
                 FormsTable.COLUMN_GPSTIME,

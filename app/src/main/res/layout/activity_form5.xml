@@ -38,11 +38,22 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
+        <CheckBox
+            android:id="@+id/crl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/mp05b00101"
+            />
+
         <LinearLayout
+            android:id="@+id/fldGrpCrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/textView"
@@ -56,21 +67,32 @@
 
             <EditText
                 android:id="@+id/mp05b00101"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:hint="@string/cm"
-            android:inputType="numberDecimal"
+                android:inputType="numberDecimal"
                 android:maxLength="3"
                 android:textSize="30sp" />
 
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/bpd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/mp05b00102"
+            />
+
         <LinearLayout
+            android:id="@+id/fldGrpBpd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -94,11 +116,22 @@
 
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/mp05b00103"
+            />
+
         <LinearLayout
+            android:id="@+id/fldGrpfl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"

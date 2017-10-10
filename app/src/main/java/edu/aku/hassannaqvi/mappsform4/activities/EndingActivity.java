@@ -3,6 +3,8 @@ package edu.aku.hassannaqvi.mappsform4.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -10,12 +12,14 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
 
 public class EndingActivity extends Activity {
 
@@ -33,6 +37,8 @@ public class EndingActivity extends Activity {
     RadioButton mp02a01404;
     @BindView(R.id.mp02a01405)
     RadioButton mp02a01405;
+    @BindView(R.id.mp02a01406)
+    RadioButton mp02a01406;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,12 @@ public class EndingActivity extends Activity {
             mp02a01403.setEnabled(true);
             mp02a01404.setEnabled(true);
             mp02a01405.setEnabled(true);
+        }
+
+        if (AppMain.formType.equals("5")) {
+            mp02a01406.setVisibility(View.VISIBLE);
+        } else {
+            mp02a01405.setVisibility(View.GONE);
         }
 
     }
@@ -98,7 +110,10 @@ public class EndingActivity extends Activity {
         Toast.makeText(this, "Saving Draft for  This Section", Toast.LENGTH_SHORT).show();
 
 
-        AppMain.fc.setIstatus(mp02a01401.isChecked() ? "1" : mp02a01402.isChecked() ? "2" : mp02a01403.isChecked() ? "3" : mp02a01404.isChecked() ? "4" : mp02a01405.isChecked() ? "5" : "0");
+        AppMain.fc.setIstatus(mp02a01401.isChecked() ? "1" : mp02a01402.isChecked() ? "2" : mp02a01403.isChecked() ? "3"
+                : mp02a01404.isChecked() ? "4" : mp02a01405.isChecked() ? "5" : mp02a01406.isChecked() ? "6" : "0");
+        AppMain.fc.setEndingDateTime((DateFormat.format("dd-MM-yyyy HH:mm", new Date())).toString());
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }

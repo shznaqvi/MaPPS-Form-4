@@ -830,6 +830,7 @@ public class Form4Activity extends AppCompatActivity  {
         // form4.put("mp04e001", mp04e00101.isChecked() ? "1" : mp04e00102.isChecked() ? "2" : "0");
         form4.put("mp04e002", mp04e00201.isChecked() ? "1" : mp04e00202.isChecked() ? "2" : mp04e00203.isChecked() ? "3" : "0");
 
+
         AppMain.fc.setsA(String.valueOf(form4));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
