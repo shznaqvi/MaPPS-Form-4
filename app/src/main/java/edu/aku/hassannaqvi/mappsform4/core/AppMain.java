@@ -75,7 +75,7 @@ public class AppMain extends Application {
     public static ParticipantsContract pc;
     public static String userName = "0000";
     public static String areaCode;
-    public static String curCluster;
+    public static String curCluster = "";
     //    For participant
     public static ArrayList<EnrolledContract> Eparticipant;
     public static String currentParticipantName = "";
