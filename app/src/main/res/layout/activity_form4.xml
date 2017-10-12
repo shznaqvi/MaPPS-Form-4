@@ -522,13 +522,6 @@
                 />
 
 
-            <RadioButton
-                android:id="@+id/mp04e00203"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/no"
-                />
-
         </RadioGroup>
 
         <LinearLayout
@@ -554,7 +547,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="startInterview"
-                android:text="@string/start_interview"
+                android:text="@string/nextSection"
                 android:textColor="@color/colorPrimary"
                 android:textSize="32sp" />
             <!--'onClick' for btn_Continue will call next section form e.g.: openSection2-->
