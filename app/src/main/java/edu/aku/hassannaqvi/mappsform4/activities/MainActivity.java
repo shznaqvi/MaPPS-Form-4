@@ -14,19 +14,26 @@ import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.mappsform4.R;
+import edu.aku.hassannaqvi.mappsform4.contracts.ClustersContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
@@ -49,6 +56,10 @@ public class MainActivity extends Activity {
     TextView recordSummary;
     @BindView(R.id.areaCode)
     EditText areaCode;
+
+    @BindView(R.id.spUC)
+    Spinner spUC;
+
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     AlertDialog.Builder builder;
@@ -56,6 +67,10 @@ public class MainActivity extends Activity {
     private String rSumText = "";
     private ProgressDialog pd;
     private Boolean exit = false;
+
+    DatabaseHelper db;
+    List<String> clustersName;
+    HashMap<String, String> cluster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +94,7 @@ public class MainActivity extends Activity {
         builder = new AlertDialog.Builder(MainActivity.this);
         ImageView img = new ImageView(getApplicationContext());
         img.setImageResource(R.drawable.tagimg);
-        img.setPadding(0,15,0,15);
+        img.setPadding(0, 15, 0, 15);
         builder.setCustomTitle(img);
 
         final EditText input = new EditText(MainActivity.this);
@@ -115,7 +130,7 @@ public class MainActivity extends Activity {
         }
 
 */
-        DatabaseHelper db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
         Collection<FormsContract> unsyncedForms4 = db.getUnsyncedForms4();
         Collection<FormsContract> unsyncedForms5 = db.getUnsyncedForms5();
@@ -183,87 +198,139 @@ public class MainActivity extends Activity {
         recordSummary.setText(rSumText);
 
 
+        //        Spinner Cluster
+
+        Collection<ClustersContract> clusterCollection = db.getAllClusters();
+
+        clustersName = new ArrayList<>();
+
+        cluster = new HashMap<>();
+
+        if (clusterCollection.size() != 0) {
+            for (ClustersContract c : clusterCollection) {
+                clustersName.add(c.getClusterName());
+                cluster.put(c.getClusterName(), c.getClusterCode());
+            }
+
+            // Creating adapter for spinner
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, clustersName);
+
+            // Drop down layout style - list view with radio button
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            // attaching data adapter to spinner
+            spUC.setAdapter(dataAdapter);
+
+            spUC.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    //((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.colorPrimary));
+                    AppMain.curCluster = cluster.get(spUC.getSelectedItem().toString());
+
+                    Log.d("Selected Cluster", AppMain.curCluster);
+
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+        }
+
     }
 
     public void openForm(View v) {
-        if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
-            AppMain.formType = "4";
-            Intent oF = new Intent(MainActivity.this, InfoActivity.class);
-            startActivity(oF);
-        } else {
+        if (!AppMain.curCluster.equals("")) {
+            if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
+                AppMain.formType = "4";
+                Intent oF = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(oF);
+            } else {
 
-            builder = new AlertDialog.Builder(MainActivity.this);
-            ImageView img = new ImageView(getApplicationContext());
-            img.setImageResource(R.drawable.tagimg);
-            img.setPadding(0,15,0,15);
-            builder.setCustomTitle(img);
+                builder = new AlertDialog.Builder(MainActivity.this);
+                ImageView img = new ImageView(getApplicationContext());
+                img.setImageResource(R.drawable.tagimg);
+                img.setPadding(0, 15, 0, 15);
+                builder.setCustomTitle(img);
 
-            final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            builder.setView(input);
+                final EditText input = new EditText(MainActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
 
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    if (!m_Text.equals("")) {
-                        editor.putString("tagName", m_Text);
-                        editor.commit();
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                        if (!m_Text.equals("")) {
+                            editor.putString("tagName", m_Text);
+                            editor.commit();
 
-                        AppMain.formType = "4";
+                            AppMain.formType = "4";
 
-                        Intent oF = new Intent(MainActivity.this, InfoActivity.class);
-                        startActivity(oF);
+                            Intent oF = new Intent(MainActivity.this, InfoActivity.class);
+                            startActivity(oF);
+                        }
                     }
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
-            builder.show();
+                builder.show();
+            }
+        } else {
+            Toast.makeText(this, "Sync cluster's from login page", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void openForm5(View v) {
-        if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
-            AppMain.formType = "5";
-            Intent oF = new Intent(MainActivity.this, InfoActivity.class);
-            startActivity(oF);
-        } else {
+        if (!AppMain.curCluster.equals("")) {
+            if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
+                AppMain.formType = "5";
+                Intent oF = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(oF);
+            } else {
 
-            builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Tag Name");
+                builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Tag Name");
 
-            final EditText input = new EditText(MainActivity.this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            builder.setView(input);
+                final EditText input = new EditText(MainActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
 
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    m_Text = input.getText().toString();
-                    if (!m_Text.equals("")) {
-                        editor.putString("tagName", m_Text);
-                        editor.commit();
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        m_Text = input.getText().toString();
+                        if (!m_Text.equals("")) {
+                            editor.putString("tagName", m_Text);
+                            editor.commit();
 
-                        AppMain.formType = "5";
-                        Intent oF = new Intent(MainActivity.this, InfoActivity.class);
-                        startActivity(oF);
+                            AppMain.formType = "5";
+                            Intent oF = new Intent(MainActivity.this, InfoActivity.class);
+                            startActivity(oF);
+                        }
                     }
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
-            builder.show();
+                builder.show();
+            }
+        } else {
+            Toast.makeText(this, "Sync cluster's from login page", Toast.LENGTH_SHORT).show();
         }
     }
 

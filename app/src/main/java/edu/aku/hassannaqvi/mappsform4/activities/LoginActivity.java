@@ -100,8 +100,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     TextView txtinstalldate;
     @BindView(R.id.email_sign_in_button)
     Button mEmailSignInButton;
-    @BindView(R.id.spUC)
-    Spinner spUC;
+//    @BindView(R.id.spUC)
+//    Spinner spUC;
     @BindView(R.id.syncClusters)
     Button syncClusters;
     @BindView(R.id.loginLayout1)
@@ -174,7 +174,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 //                TextView spUCTxtView = (TextView) spUC.getSelectedView();
 
-                if (spUC.getSelectedItem() != null) {
+//                if (spUC.getSelectedItem() != null) {
 //                    spUCTxtView.setText(null);
                     if (!mEmailView1.getText().toString().contains(mEmailView2.getText())) {
                         attemptLogin();
@@ -184,58 +184,13 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     } else {
                         Toast.makeText(getApplicationContext(), "Both username same", Toast.LENGTH_LONG).show();
                     }
-                } else {
+                /*} else {
                     Toast.makeText(getApplicationContext(), "Please Sync Clusters!!", Toast.LENGTH_LONG).show();
 //                    spUCTxtView.setTextColor(Color.RED);//just to highlight that this is an error
 //                    spUCTxtView.setText("Please Sync Clusters");//changes the selected item text to this
-                }
+                }*/
             }
         });
-
-//        Spinner Cluster
-
-        db = new DatabaseHelper(this);
-        Collection<ClustersContract> clusterCollection = db.getAllClusters();
-
-        clustersName = new ArrayList<>();
-
-        cluster = new HashMap<>();
-
-        if (clusterCollection.size() != 0) {
-            for (ClustersContract c : clusterCollection) {
-                clustersName.add(c.getClusterName());
-                cluster.put(c.getClusterName(), c.getClusterCode());
-            }
-
-            // Creating adapter for spinner
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_spinner_item, clustersName);
-
-            // Drop down layout style - list view with radio button
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            // attaching data adapter to spinner
-            spUC.setAdapter(dataAdapter);
-
-            spUC.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    //((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.colorPrimary));
-                    AppMain.curCluster = cluster.get(spUC.getSelectedItem().toString());
-
-                    Log.d("Selected Cluster", AppMain.curCluster);
-
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-
-        }
 
 //        DB backup
 
@@ -491,18 +446,18 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 //        TextView spUCTxtView = (TextView) spUC.getSelectedView();
 
-        if (spUC.getSelectedItem() != null) {
+//        if (spUC.getSelectedItem() != null) {
 
 //            spUCTxtView.setError(null);
 
             finish();
             Intent im = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(im);
-        } else {
+/*        } else {
             Toast.makeText(this, "Please Sync Clusters!!", Toast.LENGTH_LONG).show();
 //            spUCTxtView.setTextColor(Color.RED);//just to highlight that this is an error
 //            spUCTxtView.setText("Please Sync Clusters");//changes the selected item text to this
-        }
+        }*/
     }
 
     private interface ProfileQuery {
@@ -665,7 +620,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                    db = new DatabaseHelper(mContext);
+                    /*db = new DatabaseHelper(mContext);
                     Collection<ClustersContract> clusterCollection = db.getAllClusters();
 
                     clustersName = new ArrayList<>();
@@ -705,7 +660,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                             }
                         });
-                    }
+                    }*/
 
                     editor.putBoolean("flag", true);
                     editor.commit();
