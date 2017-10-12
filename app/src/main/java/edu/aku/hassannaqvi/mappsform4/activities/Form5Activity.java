@@ -86,6 +86,8 @@ public class Form5Activity extends AppCompatActivity  {
     @BindView(R.id.mp05c006) DatePickerInputEditText mp05c006;
     @BindView(R.id.mp05c007)
     DatePickerInputEditText mp05c007;
+    @BindView(R.id.mp05b00104)
+    CheckBox mp05b00104;
 
 
 
@@ -121,12 +123,15 @@ public class Form5Activity extends AppCompatActivity  {
             }
         });
 
-        crl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        mp05b00104.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    fldGrpCrl.setVisibility(View.VISIBLE);
+                    crl.setVisibility(View.GONE);
+                    crl.setChecked(false);
+                    fldGrpCrl.setVisibility(View.GONE);
+                    mp05b00101.setText(null);
                     bpd.setVisibility(View.GONE);
                     bpd.setChecked(false);
                     fldGrpBpd.setVisibility(View.GONE);
@@ -136,10 +141,28 @@ public class Form5Activity extends AppCompatActivity  {
                     fldGrpfl.setVisibility(View.GONE);
                     mp05b00103.setText(null);
                 } else {
+                    crl.setVisibility(View.VISIBLE);
+                    fldGrpCrl.setVisibility(View.VISIBLE);
+                    bpd.setVisibility(View.VISIBLE);
+                    fldGrpBpd.setVisibility(View.VISIBLE);
+                    fl.setVisibility(View.VISIBLE);
+                    fldGrpfl.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        crl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    fldGrpCrl.setVisibility(View.VISIBLE);
+                    fldGrpBpd.setVisibility(View.GONE);
+                    fldGrpfl.setVisibility(View.GONE);
+                } else {
                     fldGrpCrl.setVisibility(View.GONE);
                     mp05b00101.setText(null);
-                    bpd.setVisibility(View.VISIBLE);
-                    fl.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -151,14 +174,10 @@ public class Form5Activity extends AppCompatActivity  {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     fldGrpBpd.setVisibility(View.VISIBLE);
-                    crl.setVisibility(View.GONE);
-                    crl.setChecked(false);
-                    fldGrpCrl.setVisibility(View.GONE);
-                    mp05b00101.setText(null);
+
                 } else {
                     fldGrpBpd.setVisibility(View.GONE);
                     mp05b00102.setText(null);
-                    crl.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -169,14 +188,11 @@ public class Form5Activity extends AppCompatActivity  {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     fldGrpfl.setVisibility(View.VISIBLE);
-                    crl.setVisibility(View.GONE);
-                    crl.setChecked(false);
-                    fldGrpCrl.setVisibility(View.GONE);
-                    mp05b00101.setText(null);
+
                 } else {
                     fldGrpfl.setVisibility(View.GONE);
                     mp05b00103.setText(null);
-                    crl.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -235,7 +251,7 @@ public class Form5Activity extends AppCompatActivity  {
 
     public boolean ValidateForm() {
 
-        if (!(crl.isChecked() || bpd.isChecked() || fl.isChecked())) {
+        if (!(crl.isChecked() || bpd.isChecked() || fl.isChecked() || mp05b00104.isChecked())) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b001), Toast.LENGTH_LONG).show();
             crl.setError("This data is Required!");    // Set Error on last check box
             crl.requestFocus();
@@ -245,84 +261,86 @@ public class Form5Activity extends AppCompatActivity  {
             crl.setError(null);
         }
 
+        if (!mp05b00104.isChecked()) {
 
-        if (crl.isChecked()) {
-            if (mp05b00101.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
-                mp05b00101.setError("This data is Required!");
-                Log.i(TAG, "mp05b00101: This data is Required!");
-                return false;
-            } else {
-                mp05b00101.setError(null);
-                if (!mp05b00101.getText().toString().contains(".")) {
+            if (crl.isChecked()) {
+                if (mp05b00101.getText().toString().isEmpty()) {
                     Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
-                    mp05b00101.setError("Invalid: Decimal value is Required!");
-                    Log.i(TAG, "mp05b00101: Invalid Decimal value is Required!");
+                    mp05b00101.setError("This data is Required!");
+                    Log.i(TAG, "mp05b00101: This data is Required!");
                     return false;
                 } else {
                     mp05b00101.setError(null);
-                    if (Double.parseDouble(mp05b00101.getText().toString()) < 0.3 || Double.parseDouble(mp05b00101.getText().toString()) > 0.9) {
+                    if (!mp05b00101.getText().toString().contains(".")) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
-                        mp05b00101.setError("Invalid: Range 0.3-0.9");
-                        Log.i(TAG, "mp05b00101: Invalid Range 0.3-0.9");
+                        mp05b00101.setError("Invalid: Decimal value is Required!");
+                        Log.i(TAG, "mp05b00101: Invalid Decimal value is Required!");
                         return false;
                     } else {
                         mp05b00101.setError(null);
+                        if (Double.parseDouble(mp05b00101.getText().toString()) < 0.3 || Double.parseDouble(mp05b00101.getText().toString()) > 0.9) {
+                            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
+                            mp05b00101.setError("Invalid: Range 0.3-0.9");
+                            Log.i(TAG, "mp05b00101: Invalid Range 0.3-0.9");
+                            return false;
+                        } else {
+                            mp05b00101.setError(null);
+                        }
                     }
                 }
             }
-        }
 
-        if (bpd.isChecked()) {
-            if (mp05b00102.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
-                mp05b00102.setError("This data is Required!");
-                Log.i(TAG, "mp05b00102: This data is Required!");
-                return false;
-            } else {
-                mp05b00102.setError(null);
-                if (!mp05b00102.getText().toString().contains(".")) {
+            if (bpd.isChecked()) {
+                if (mp05b00102.getText().toString().isEmpty()) {
                     Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
-                    mp05b00102.setError("Invalid: Decimal value is Required!");
-                    Log.i(TAG, "mp05b00102: Invalid Decimal value is Required!");
+                    mp05b00102.setError("This data is Required!");
+                    Log.i(TAG, "mp05b00102: This data is Required!");
                     return false;
                 } else {
                     mp05b00102.setError(null);
-                    if (Double.parseDouble(mp05b00102.getText().toString()) < 2.0 || Double.parseDouble(mp05b00102.getText().toString()) > 9.9) {
+                    if (!mp05b00102.getText().toString().contains(".")) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
-                        mp05b00102.setError("Invalid: Range 2.0-9.9");
-                        Log.i(TAG, "mp05b00102: Invalid Range 2.0-9.9");
+                        mp05b00102.setError("Invalid: Decimal value is Required!");
+                        Log.i(TAG, "mp05b00102: Invalid Decimal value is Required!");
                         return false;
                     } else {
                         mp05b00102.setError(null);
+                        if (Double.parseDouble(mp05b00102.getText().toString()) < 2.0 || Double.parseDouble(mp05b00102.getText().toString()) > 9.9) {
+                            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00102), Toast.LENGTH_SHORT).show();
+                            mp05b00102.setError("Invalid: Range 2.0-9.9");
+                            Log.i(TAG, "mp05b00102: Invalid Range 2.0-9.9");
+                            return false;
+                        } else {
+                            mp05b00102.setError(null);
+                        }
                     }
                 }
             }
-        }
 
 
-        if (fl.isChecked()) {
-            if (mp05b00103.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
-                mp05b00103.setError("This data is Required!");
-                Log.i(TAG, "mp05b00103: This data is Required!");
-                return false;
-            } else {
-                mp05b00103.setError(null);
-                if (!mp05b00103.getText().toString().contains(".")) {
+            if (fl.isChecked()) {
+                if (mp05b00103.getText().toString().isEmpty()) {
                     Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
-                    mp05b00103.setError("Invalid: Decimal value is Required!");
-                    Log.i(TAG, "mp05b00103: Invalid Decimal value is Required!");
+                    mp05b00103.setError("This data is Required!");
+                    Log.i(TAG, "mp05b00103: This data is Required!");
                     return false;
                 } else {
                     mp05b00103.setError(null);
-                    if (Double.parseDouble(mp05b00103.getText().toString()) < 1.0 || Double.parseDouble(mp05b00103.getText().toString()) > 9.0) {
+                    if (!mp05b00103.getText().toString().contains(".")) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
-                        mp05b00103.setError("Invalid: Range 1.0-9.0");
-                        Log.i(TAG, "mp05b00103: Invalid Range 1.0-9.0");
+                        mp05b00103.setError("Invalid: Decimal value is Required!");
+                        Log.i(TAG, "mp05b00103: Invalid Decimal value is Required!");
                         return false;
                     } else {
                         mp05b00103.setError(null);
+                        if (Double.parseDouble(mp05b00103.getText().toString()) < 1.0 || Double.parseDouble(mp05b00103.getText().toString()) > 9.0) {
+                            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00103), Toast.LENGTH_SHORT).show();
+                            mp05b00103.setError("Invalid: Range 1.0-9.0");
+                            Log.i(TAG, "mp05b00103: Invalid Range 1.0-9.0");
+                            return false;
+                        } else {
+                            mp05b00103.setError(null);
+                        }
                     }
                 }
             }
@@ -349,43 +367,23 @@ public class Form5Activity extends AppCompatActivity  {
             mp05b002d.setError(null);
         }
 
-        if (crl.isChecked()) {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 7
-                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 13) {
+        if (crl.isChecked() && !bpd.isChecked() && !fl.isChecked()) {
+            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 4
+                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 15) {
                 Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 7 to 13 weeks");
-                Log.i(TAG, "mp05b002d: Range is 7 to 13 weeks");
+                mp05b002w.setError("Range is 4 to 15 weeks");
+                Log.i(TAG, "mp05b002d: Range is 4 to 15 weeks");
                 return false;
             } else {
                 mp05b002w.setError(null);
             }
-        } else if (bpd.isChecked() && !fl.isChecked())
+        } else if (bpd.isChecked() || fl.isChecked())
         {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 12
-                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 26) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 12 to 26 weeks");
-                Log.i(TAG, "mp05b002d: Range is 12 to 26 weeks");
-                return false;
-            } else {
-                mp05b002w.setError(null);
-            }
-        } else if (fl.isChecked() && !bpd.isChecked()) {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 14
+            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 13
                     || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 42) {
                 Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 14 to 42 weeks");
-                Log.i(TAG, "mp05b002d: Range is 14 to 42 weeks");
-                return false;
-            } else {
-                mp05b002w.setError(null);
-            }
-        } else if (bpd.isChecked() && fl.isChecked()) {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 12
-                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 42) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 12 to 42 weeks");
-                Log.i(TAG, "mp05b002d: Range is 12 to 42 weeks");
+                mp05b002w.setError("Range is 13 to 42 weeks");
+                Log.i(TAG, "mp05b002d: Range is 13 to 42 weeks");
                 return false;
             } else {
                 mp05b002w.setError(null);
