@@ -98,7 +98,7 @@ public class Form5Activity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form5);
         ButterKnife.bind(this);
-        String maxDate9Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_9Months) + AppMain.MILLISECONDS_IN_DAY));
+        String maxDate9Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() + ((AppMain.MILLISECONDS_IN_9Months) + AppMain.MILLISECONDS_IN_DAY));
         String maxDate8Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_8Months) + AppMain.MILLISECONDS_IN_DAY));
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
 
