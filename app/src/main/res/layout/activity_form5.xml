@@ -419,8 +419,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/mp05c00204"
             android:inputType="textCapWords"
-            android:text="Specify "/>
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="match_parent"
@@ -486,7 +487,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="startInterview"
-                android:text="@string/start_interview"
+                android:text="@string/nextSection"
                 android:textColor="@color/colorPrimary"
                 android:textSize="32sp" />
             <!--'onClick' for btn_Continue will call next section form e.g.: openSection2-->
