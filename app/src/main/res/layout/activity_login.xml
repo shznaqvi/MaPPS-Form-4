@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Spinner
+                <!--<Spinner
                     android:id="@+id/spUC"
                     style="@style/spinner"
                     android:layout_width="0dp"
@@ -165,7 +165,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="35"
                     android:gravity="center"
-                    android:popupBackground="#ffffff" />
+                    android:popupBackground="#ffffff" />-->
 
                 <Button
                     android:id="@+id/syncClusters"

@@ -54,18 +54,20 @@ public class EndingActivity extends Activity {
             mp02a01403.setEnabled(false);
             mp02a01404.setEnabled(false);
             mp02a01405.setEnabled(false);
+            mp02a01406.setEnabled(false);
         } else {
             mp02a01401.setEnabled(false);
             mp02a01402.setEnabled(true);
             mp02a01403.setEnabled(true);
             mp02a01404.setEnabled(true);
             mp02a01405.setEnabled(true);
+            mp02a01406.setEnabled(true);
         }
 
         if (AppMain.formType.equals("5")) {
             mp02a01406.setVisibility(View.VISIBLE);
         } else {
-            mp02a01405.setVisibility(View.GONE);
+            mp02a01406.setVisibility(View.GONE);
         }
 
     }
@@ -97,10 +99,10 @@ public class EndingActivity extends Activity {
 
         if (mp02a014.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "" + getString(R.string.mp04a013), Toast.LENGTH_SHORT).show();
-            mp02a01405.setError("This data is Required!");
+            mp02a01406.setError("This data is Required!");
             return false;
         } else {
-            mp02a01405.setError(null);
+            mp02a01406.setError(null);
         }
 
         return true;

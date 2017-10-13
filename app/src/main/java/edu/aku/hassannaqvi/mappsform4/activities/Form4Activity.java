@@ -68,7 +68,7 @@ public class Form4Activity extends AppCompatActivity  {
     @BindView(R.id.mp04e002) RadioGroup mp04e002;
     @BindView(R.id.mp04e00201) RadioButton mp04e00201;
     @BindView(R.id.mp04e00202) RadioButton mp04e00202;
-    @BindView(R.id.mp04e00203) RadioButton mp04e00203;
+
     @BindView(R.id.mp04d00177)
     CheckBox mp04d00177;
 
@@ -410,10 +410,10 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d005.setError(null);
-                    if (Double.parseDouble(mp02d005.getText().toString()) < 30 || Double.parseDouble(mp02d005.getText().toString()) > 99) {
+                    if (Double.parseDouble(mp02d005.getText().toString()) < 30.0 || Double.parseDouble(mp02d005.getText().toString()) > 99.0) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d005), Toast.LENGTH_SHORT).show();
-                        mp02d005.setError("Invalid: Range 33-99");
-                        Log.i(TAG, "mp02d005: Invalid Range 33-99");
+                        mp02d005.setError("Invalid: Range 30.0-99.0");
+                        Log.i(TAG, "mp02d005: Invalid Range 30.0-99.0");
                         return false;
                     } else {
                         mp02d005.setError(null);
@@ -455,10 +455,10 @@ public class Form4Activity extends AppCompatActivity  {
                     return false;
                 } else {
                     mp02d006.setError(null);
-                    if (Double.parseDouble(mp02d006.getText().toString()) < 30 || Double.parseDouble(mp02d006.getText().toString()) > 99) {
+                    if (Double.parseDouble(mp02d006.getText().toString()) < 30.0 || Double.parseDouble(mp02d006.getText().toString()) > 99.0) {
                         Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d006), Toast.LENGTH_SHORT).show();
-                        mp02d006.setError("Invalid: Range 33-99");
-                        Log.i(TAG, "mp02d006: Invalid Range 33-99");
+                        mp02d006.setError("Invalid: Range 30.0-99.0");
+                        Log.i(TAG, "mp02d006: Invalid Range 30.0-99.0");
                         return false;
                     } else {
                         mp02d006.setError(null);
@@ -541,10 +541,10 @@ public class Form4Activity extends AppCompatActivity  {
                         return false;
                     } else {
                         mp02d008.setError(null);
-                        if (Double.parseDouble(mp02d008.getText().toString()) < 30 || Double.parseDouble(mp02d008.getText().toString()) > 99) {
+                        if (Double.parseDouble(mp02d008.getText().toString()) < 30.0 || Double.parseDouble(mp02d008.getText().toString()) > 99.0) {
                             Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp02d008), Toast.LENGTH_SHORT).show();
-                            mp02d008.setError("Invalid: Range 5-170");
-                            Log.i(TAG, "mp02d008: Invalid Range 5-170");
+                            mp02d008.setError("Invalid: Range 30.0-99.0");
+                            Log.i(TAG, "mp02d008: Invalid Range 30.0-99.0");
                             return false;
                         } else {
                             mp02d008.setError(null);
@@ -750,17 +750,16 @@ public class Form4Activity extends AppCompatActivity  {
             } else {
                 mp04d001.setError(null);
             }
-        }
 
-        if (Double.valueOf(mp04d001.getText().toString()) < 4 || Double.valueOf(mp04d001.getText().toString()) > 20) {
-            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp04d001), Toast.LENGTH_SHORT).show();
-            mp04d001.setError("Range is 4.0 to 20.0");
-            Log.i(TAG, "mp04d001: Range is 4.0 to 20.0");
-            return false;
-        } else {
-            mp04d001.setError(null);
+            if (Double.valueOf(mp04d001.getText().toString()) < 4.0 || Double.valueOf(mp04d001.getText().toString()) > 20.0) {
+                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp04d001), Toast.LENGTH_SHORT).show();
+                mp04d001.setError("Range is 4.0 to 20.0");
+                Log.i(TAG, "mp04d001: Range is 4.0 to 20.0");
+                return false;
+            } else {
+                mp04d001.setError(null);
+            }
         }
-
 
             /*if (mp04e001.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp04e001), Toast.LENGTH_SHORT).show();
@@ -773,11 +772,11 @@ public class Form4Activity extends AppCompatActivity  {
 
             if (mp04e002.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp04e002), Toast.LENGTH_SHORT).show();
-                mp04e00203.setError("This data is Required!");
+                mp04e00202.setError("This data is Required!");
                 Log.i(TAG, "mp04e002: This data is Required!");
                 return false;
             } else {
-                mp04e00203.setError(null);
+                mp04e00202.setError(null);
             }
 
 
@@ -828,8 +827,7 @@ public class Form4Activity extends AppCompatActivity  {
 
         form4.put("mp04d001", mp04d00177.isChecked() ? "77" : mp04d001.getText().toString());
         // form4.put("mp04e001", mp04e00101.isChecked() ? "1" : mp04e00102.isChecked() ? "2" : "0");
-        form4.put("mp04e002", mp04e00201.isChecked() ? "1" : mp04e00202.isChecked() ? "2" : mp04e00203.isChecked() ? "3" : "0");
-
+        form4.put("mp04e002", mp04e00201.isChecked() ? "1" : mp04e00202.isChecked() ? "2" : "0");
 
         AppMain.fc.setsA(String.valueOf(form4));
 
