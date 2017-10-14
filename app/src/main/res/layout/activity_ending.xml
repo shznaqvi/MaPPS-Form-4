@@ -86,7 +86,8 @@
                 android:onClick="endInterview"
                 android:padding="2dp"
                 android:text="@string/end_interview"
-                android:textColor="#ff1e1e" />
+                android:textColor="#ff1e1e"
+                android:textSize="32sp"/>
 
             <!--'onClick' for btn_End will NOT change and always call 'endInterview'-->
 

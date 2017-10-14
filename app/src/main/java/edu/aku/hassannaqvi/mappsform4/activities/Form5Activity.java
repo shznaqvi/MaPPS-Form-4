@@ -33,7 +33,10 @@ public class Form5Activity extends AppCompatActivity  {
 
     private static final String TAG = Form5Activity.class.getSimpleName();
 
+
     @BindView(R.id.app_header) TextView appHeader;
+    @BindView(R.id.grpcrl)
+    LinearLayout grpcrl;
     @BindView(R.id.crl)
     CheckBox crl;
     @BindView(R.id.fldGrpCrl)
@@ -42,20 +45,36 @@ public class Form5Activity extends AppCompatActivity  {
     TextView textView;
     @BindView(R.id.mp05b00101)
     EditText mp05b00101;
+    @BindView(R.id.mp05b002crlw)
+    EditText mp05b002crlw;
+    @BindView(R.id.mp05b002crld)
+    EditText mp05b002crld;
+    @BindView(R.id.grpbpd)
+    LinearLayout grpbpd;
     @BindView(R.id.bpd)
     CheckBox bpd;
     @BindView(R.id.fldGrpBpd)
     LinearLayout fldGrpBpd;
     @BindView(R.id.mp05b00102)
     EditText mp05b00102;
+    @BindView(R.id.mp05b002bpdw)
+    EditText mp05b002bpdw;
+    @BindView(R.id.mp05b002bpdd)
+    EditText mp05b002bpdd;
+    @BindView(R.id.grpfl)
+    LinearLayout grpfl;
     @BindView(R.id.fl)
     CheckBox fl;
     @BindView(R.id.fldGrpfl)
     LinearLayout fldGrpfl;
     @BindView(R.id.mp05b00103)
     EditText mp05b00103;
-    @BindView(R.id.mp05b002w) EditText mp05b002w;
-    @BindView(R.id.mp05b002d) EditText mp05b002d;
+    @BindView(R.id.mp05b002flw)
+    EditText mp05b002flw;
+    @BindView(R.id.mp05b002fld)
+    EditText mp05b002fld;
+    @BindView(R.id.mp05b00104)
+    CheckBox mp05b00104;
     @BindView(R.id.mp05c001) RadioGroup mp05c001;
     @BindView(R.id.mp05c00101) RadioButton mp05c00101;
     @BindView(R.id.mp05c00102) RadioButton mp05c00102;
@@ -86,8 +105,7 @@ public class Form5Activity extends AppCompatActivity  {
     @BindView(R.id.mp05c006) DatePickerInputEditText mp05c006;
     @BindView(R.id.mp05c007)
     DatePickerInputEditText mp05c007;
-    @BindView(R.id.mp05b00104)
-    CheckBox mp05b00104;
+
 
 
 
@@ -128,25 +146,35 @@ public class Form5Activity extends AppCompatActivity  {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    grpcrl.setVisibility(View.GONE);
+                    grpbpd.setVisibility(View.GONE);
+                    grpfl.setVisibility(View.GONE);
                     crl.setVisibility(View.GONE);
                     crl.setChecked(false);
                     fldGrpCrl.setVisibility(View.GONE);
                     mp05b00101.setText(null);
+                    mp05b002crlw.setText(null);
+                    mp05b002crld.setText(null);
                     bpd.setVisibility(View.GONE);
                     bpd.setChecked(false);
                     fldGrpBpd.setVisibility(View.GONE);
                     mp05b00102.setText(null);
+                    mp05b002bpdw.setText(null);
+                    mp05b002bpdd.setText(null);
                     fl.setVisibility(View.GONE);
                     fl.setChecked(false);
                     fldGrpfl.setVisibility(View.GONE);
                     mp05b00103.setText(null);
+                    mp05b002flw.setText(null);
+                    mp05b002fld.setText(null);
                 } else {
+                    grpfl.setVisibility(View.VISIBLE);
+                    grpbpd.setVisibility(View.VISIBLE);
+                    grpcrl.setVisibility(View.VISIBLE);
                     crl.setVisibility(View.VISIBLE);
-                    fldGrpCrl.setVisibility(View.VISIBLE);
                     bpd.setVisibility(View.VISIBLE);
-                    fldGrpBpd.setVisibility(View.VISIBLE);
                     fl.setVisibility(View.VISIBLE);
-                    fldGrpfl.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -157,8 +185,6 @@ public class Form5Activity extends AppCompatActivity  {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     fldGrpCrl.setVisibility(View.VISIBLE);
-                    fldGrpBpd.setVisibility(View.GONE);
-                    fldGrpfl.setVisibility(View.GONE);
                 } else {
                     fldGrpCrl.setVisibility(View.GONE);
                     mp05b00101.setText(null);
@@ -288,6 +314,48 @@ public class Form5Activity extends AppCompatActivity  {
                         }
                     }
                 }
+
+                if (mp05b002crlw.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
+                    mp05b002crlw.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002crlw: This data is Required!");
+                    return false;
+                } else {
+                    mp05b002crlw.setError(null);
+                }
+
+
+                if (Integer.valueOf(mp05b002crlw.getText().toString().isEmpty() ? "0" : mp05b002crlw.getText().toString()) < 4
+                        || Integer.valueOf(mp05b002crlw.getText().toString().isEmpty() ? "0" : mp05b002crlw.getText().toString()) > 15) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
+                    mp05b002crlw.setError("Range is 4 to 15 weeks");
+                    Log.i(TAG, "mp05b002crlw: Range is 4 to 15 weeks");
+                    return false;
+                } else {
+                    mp05b002crlw.setError(null);
+                }
+
+                if (mp05b002crld.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                    mp05b002crld.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002crld: This data is Required!");
+                    return false;
+                } else {
+                    mp05b002crld.setError(null);
+                }
+
+                if (!mp05b002crld.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(mp05b002crld.getText().toString()) < 0
+                            || Integer.valueOf(mp05b002crld.getText().toString()) > 6) {
+                        Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                        mp05b002crld.setError("Range is 0 to 6 days");
+                        Log.i(TAG, "mp05b002crld: Range is 0 to 6 days");
+                        return false;
+                    } else {
+                        mp05b002crld.setError(null);
+                    }
+                }
+
             }
 
             if (bpd.isChecked()) {
@@ -315,6 +383,48 @@ public class Form5Activity extends AppCompatActivity  {
                         }
                     }
                 }
+
+                if (mp05b002bpdw.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
+                    mp05b002bpdw.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002bpd: This data is Required!");
+                    return false;
+                } else {
+                    mp05b002bpdw.setError(null);
+                }
+
+                if (Integer.valueOf(mp05b002bpdw.getText().toString().isEmpty() ? "0" : mp05b002bpdw.getText().toString()) < 13
+                        || Integer.valueOf(mp05b002bpdw.getText().toString().isEmpty() ? "0" : mp05b002bpdw.getText().toString()) > 42) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
+                    mp05b002bpdw.setError("Range is 13 to 42 weeks");
+                    Log.i(TAG, "mp05b002bpdw: Range is 13 to 42 weeks");
+                    return false;
+                } else {
+                    mp05b002bpdw.setError(null);
+                }
+
+
+                if (mp05b002bpdd.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                    mp05b002bpdd.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002bpdd: This data is Required!");
+                    return false;
+                } else {
+                    mp05b002bpdd.setError(null);
+                }
+                if (!mp05b002bpdd.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(mp05b002bpdd.getText().toString().isEmpty() ? "0" : mp05b002bpdd.getText().toString()) < 0
+                            || Integer.valueOf(mp05b002bpdd.getText().toString().isEmpty() ? "0" : mp05b002bpdd.getText().toString()) > 6) {
+                        Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                        mp05b002bpdd.setError("Range is 0 to 6 days");
+                        Log.i(TAG, "mp05b002bpdd: Range is 0 to 6 days");
+                        return false;
+                    } else {
+                        mp05b002bpdd.setError(null);
+                    }
+                }
+
+
             }
 
 
@@ -344,51 +454,51 @@ public class Form5Activity extends AppCompatActivity  {
                     }
                 }
             }
-        }
 
-        if (mp05b002d.getText().toString().isEmpty() && mp05b002w.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
-            mp05b002d.setError("This data is Required!");
-            Log.i(TAG, "mp05b002: This data is Required!");
-            return false;
-        } else {
-            mp05b002d.setError(null);
-        }
-
-
-        if (Integer.valueOf(mp05b002d.getText().toString().isEmpty() ? "0" : mp05b002d.getText().toString()) < 0
-                || Integer.valueOf(mp05b002d.getText().toString().isEmpty() ? "0" : mp05b002d.getText().toString()) > 6)
-        {
-            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
-            mp05b002d.setError("Range is 0 to 6 days");
-            Log.i(TAG, "mp05b002d: Range is 0 to 6 days");
-            return false;
-        } else {
-            mp05b002d.setError(null);
-        }
-
-        if (crl.isChecked() && !bpd.isChecked() && !fl.isChecked()) {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 4
-                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 15) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 4 to 15 weeks");
-                Log.i(TAG, "mp05b002d: Range is 4 to 15 weeks");
+            if (mp05b002flw.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
+                mp05b002flw.setError("This data is Required!");
+                Log.i(TAG, "mp05b002fl: This data is Required!");
                 return false;
             } else {
-                mp05b002w.setError(null);
+                mp05b002flw.setError(null);
             }
-        } else if (bpd.isChecked() || fl.isChecked())
-        {
-            if (Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) < 13
-                    || Integer.valueOf(mp05b002w.getText().toString().isEmpty() ? "0" : mp05b002w.getText().toString()) > 42) {
+
+            if (Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) < 13
+                    || Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) > 42) {
                 Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002w.setError("Range is 13 to 42 weeks");
-                Log.i(TAG, "mp05b002d: Range is 13 to 42 weeks");
+                mp05b002flw.setError("Range is 13 to 42 weeks");
+                Log.i(TAG, "mp05b002flw: Range is 13 to 42 weeks");
                 return false;
             } else {
-                mp05b002w.setError(null);
+                mp05b002flw.setError(null);
             }
+
+            if (mp05b002fld.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                mp05b002fld.setError("This data is Required!");
+                Log.i(TAG, "mp05b002fld: This data is Required!");
+                return false;
+            } else {
+                mp05b002fld.setError(null);
+            }
+
+            if (!mp05b002fld.getText().toString().isEmpty()) {
+                if (Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) < 0
+                        || Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) > 6) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                    mp05b002fld.setError("Range is 0 to 6 days");
+                    Log.i(TAG, "mp05b002fld: Range is 0 to 6 days");
+                    return false;
+                } else {
+                    mp05b002fld.setError(null);
+                }
+            }
+
+
+
         }
+
 
         if (mp05c001.getCheckedRadioButtonId() == -1 ) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c001), Toast.LENGTH_SHORT).show();
@@ -474,15 +584,19 @@ public class Form5Activity extends AppCompatActivity  {
 
         JSONObject form5 = new JSONObject();
 
-        form5.put("crl", crl.isChecked() ? "1" : "2");
-        form5.put("bpd", bpd.isChecked() ? "1" : "2");
-        form5.put("fl", fl.isChecked() ? "1" : "2");
-        form5.put("mp05b00101", mp05b00101.getText().toString());
-        form5.put("mp05b00102", mp05b00102.getText().toString());
-        form5.put("mp05b00103", mp05b00103.getText().toString());
-        form5.put("mp05b00104", mp05b00104.getText().toString());
-        form5.put("mp05b002w", mp05b002w.getText().toString());
-        form5.put("mp05b002d", mp05b002d.getText().toString());
+        form5.put("mp05b00101", crl.isChecked() ? "1" : "2");
+        form5.put("mp05b00101x", mp05b00101.getText().toString());
+        form5.put("mp05b002crlw", mp05b002crlw.getText().toString());
+        form5.put("mp05b002crld", mp05b002crld.getText().toString());
+        form5.put("mp05b00102", bpd.isChecked() ? "1" : "2");
+        form5.put("mp05b00102x", mp05b00102.getText().toString());
+        form5.put("mp05b002bpdw", mp05b002bpdw.getText().toString());
+        form5.put("mp05b002bpdd", mp05b002bpdd.getText().toString());
+        form5.put("mp05b00103", fl.isChecked() ? "1" : "2");
+        form5.put("mp05b00103x", mp05b00103.getText().toString());
+        form5.put("mp05b002flw", mp05b002flw.getText().toString());
+        form5.put("mp05b002fld", mp05b002fld.getText().toString());
+        form5.put("mp05b00104", mp05b00104.isChecked() ? "1" : "2");
         form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : mp05c00103.isChecked() ? "3" : "0");
         form5.put("mp05c002", mp05c00201.isChecked() ? "1" : mp05c00202.isChecked() ? "2" : mp05c00203.isChecked() ? "3" : "0");
         form5.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : mp05c00303.isChecked() ? "3" : "0");
