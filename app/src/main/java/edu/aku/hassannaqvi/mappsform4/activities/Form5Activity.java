@@ -480,6 +480,7 @@ public class Form5Activity extends AppCompatActivity  {
         form5.put("mp05b00101", mp05b00101.getText().toString());
         form5.put("mp05b00102", mp05b00102.getText().toString());
         form5.put("mp05b00103", mp05b00103.getText().toString());
+        form5.put("mp05b00104", mp05b00104.getText().toString());
         form5.put("mp05b002w", mp05b002w.getText().toString());
         form5.put("mp05b002d", mp05b002d.getText().toString());
         form5.put("mp05c001", mp05c00101.isChecked() ? "1" : mp05c00102.isChecked() ? "2" : mp05c00103.isChecked() ? "3" : "0");
@@ -487,6 +488,7 @@ public class Form5Activity extends AppCompatActivity  {
         form5.put("mp05c003", mp05c00301.isChecked() ? "1" : mp05c00302.isChecked() ? "2" : mp05c00303.isChecked() ? "3" : "0");
         form5.put("mp05c004", mp05c00401.isChecked() ? "1" : mp05c00402.isChecked() ? "2" : mp05c00403.isChecked() ? "3" : "0");
         form5.put("mp05c005", mp05c00501.isChecked() ? "1" : mp05c00502.isChecked() ? "2" : mp05c00503.isChecked() ? "3" : "0");
+        form5.put("mp05c005x", mp05c005x.getText().toString());
         form5.put("mp05c006", mp05c006.getText().toString());
         form5.put("mp05c007", mp05c007.getText().toString());
 
