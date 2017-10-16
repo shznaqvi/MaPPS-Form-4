@@ -453,47 +453,49 @@ public class Form5Activity extends AppCompatActivity  {
                         }
                     }
                 }
-            }
 
-            if (mp05b002flw.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
-                mp05b002flw.setError("This data is Required!");
-                Log.i(TAG, "mp05b002fl: This data is Required!");
-                return false;
-            } else {
-                mp05b002flw.setError(null);
-            }
+                if (mp05b002flw.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002), Toast.LENGTH_SHORT).show();
+                    mp05b002flw.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002fl: This data is Required!");
+                    return false;
+                } else {
+                    mp05b002flw.setError(null);
+                }
 
-            if (Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) < 13
-                    || Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) > 42) {
-                Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
-                mp05b002flw.setError("Range is 13 to 42 weeks");
-                Log.i(TAG, "mp05b002flw: Range is 13 to 42 weeks");
-                return false;
-            } else {
-                mp05b002flw.setError(null);
-            }
+                if (Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) < 13
+                        || Integer.valueOf(mp05b002flw.getText().toString().isEmpty() ? "0" : mp05b002flw.getText().toString()) > 42) {
+                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.mp04b002a), Toast.LENGTH_SHORT).show();
+                    mp05b002flw.setError("Range is 13 to 42 weeks");
+                    Log.i(TAG, "mp05b002flw: Range is 13 to 42 weeks");
+                    return false;
+                } else {
+                    mp05b002flw.setError(null);
+                }
 
-            if (mp05b002fld.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
-                mp05b002fld.setError("This data is Required!");
-                Log.i(TAG, "mp05b002fld: This data is Required!");
-                return false;
-            } else {
-                mp05b002fld.setError(null);
-            }
-
-            if (!mp05b002fld.getText().toString().isEmpty()) {
-                if (Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) < 0
-                        || Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) > 6) {
-                    Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
-                    mp05b002fld.setError("Range is 0 to 6 days");
-                    Log.i(TAG, "mp05b002fld: Range is 0 to 6 days");
+                if (mp05b002fld.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                    mp05b002fld.setError("This data is Required!");
+                    Log.i(TAG, "mp05b002fld: This data is Required!");
                     return false;
                 } else {
                     mp05b002fld.setError(null);
                 }
+
+                if (!mp05b002fld.getText().toString().isEmpty()) {
+                    if (Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) < 0
+                            || Integer.valueOf(mp05b002fld.getText().toString().isEmpty() ? "0" : mp05b002fld.getText().toString()) > 6) {
+                        Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b002) + " - " + getString(R.string.days), Toast.LENGTH_SHORT).show();
+                        mp05b002fld.setError("Range is 0 to 6 days");
+                        Log.i(TAG, "mp05b002fld: Range is 0 to 6 days");
+                        return false;
+                    } else {
+                        mp05b002fld.setError(null);
+                    }
+                }
+
             }
+
 
 
 
