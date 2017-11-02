@@ -278,10 +278,10 @@ public class Form5Activity extends AppCompatActivity  {
                         return false;
                     } else {
                         mp05b00101.setError(null);
-                        if (Double.parseDouble(mp05b00101.getText().toString()) < 0.3 || Double.parseDouble(mp05b00101.getText().toString()) > 0.9) {
+                        if (Double.parseDouble(mp05b00101.getText().toString()) < 0.3 || Double.parseDouble(mp05b00101.getText().toString()) > 8.9) {
                             Toast.makeText(this, "ERROR(invalid): " + getString(R.string.mp05b00101), Toast.LENGTH_SHORT).show();
-                            mp05b00101.setError("Invalid: Range 0.3-0.9");
-                            Log.i(TAG, "mp05b00101: Invalid Range 0.3-0.9");
+                            mp05b00101.setError("Invalid: Range 0.3-8.9");
+                            Log.i(TAG, "mp05b00101: Invalid Range 0.3-8.9");
                             return false;
                         } else {
                             mp05b00101.setError(null);
