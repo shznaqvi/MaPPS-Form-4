@@ -30,7 +30,6 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -38,7 +37,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +47,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -58,10 +55,9 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
-import edu.aku.hassannaqvi.mappsform4.R;
-import edu.aku.hassannaqvi.mappsform4.contracts.ClustersContract;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetClusters;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetLHWs;
 import edu.aku.hassannaqvi.mappsform4.getclasses.GetUsers;
@@ -153,10 +149,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         }
 
         // Set up the login form.
-        mEmailView1 = (AutoCompleteTextView) findViewById(R.id.email1);
+        mEmailView1 = findViewById(R.id.email1);
         populateAutoComplete();
 
-        mPasswordView1 = (EditText) findViewById(R.id.password1);
+        mPasswordView1 = findViewById(R.id.password1);
         mPasswordView1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {

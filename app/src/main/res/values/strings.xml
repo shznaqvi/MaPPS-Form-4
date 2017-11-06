@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MaPPS - Form 4 and 5: Pregnancy Confirmation and Clinical Assessment</string>
     <string name="app_name4">MaPPS - Form 4: Pregnancy Confirmation and Clinical Assessment</string>
@@ -23,8 +24,6 @@
     <string name="Seca"> معلومات براء سڃاڻپ </string>
     <string name="Secb">  آخري ماهواري جي نشاندهي </string>
     <string name="form5">الٽراسائونڊ جو معائنو</string>
-
-
 
 
     <!-- Strings that are fixed for all apps -->
