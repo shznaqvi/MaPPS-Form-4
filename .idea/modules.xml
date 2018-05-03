@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://E:\Hassan\Android\MaPPSForm4\MaPPS-Form-4.iml" filepath="E:\Hassan\Android\MaPPSForm4\MaPPS-Form-4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MaPPS-Form-4.iml" filepath="$PROJECT_DIR$/MaPPS-Form-4.iml" />
+      <module fileurl="file://E:/Hassan/Android/MaPPSForm4/MaPPS-Form-4.iml" filepath="E:/Hassan/Android/MaPPSForm4/MaPPS-Form-4.iml" />
+      <module fileurl="file://C:/Users/sidra.nizam/MaPPS-Form-4/MaPPSForm4.iml" filepath="C:/Users/sidra.nizam/MaPPS-Form-4/MaPPSForm4.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaPPSForm4.iml" filepath="$PROJECT_DIR$/MaPPSForm4.iml" />
-      <module fileurl="file://C:\Users\sidra.nizam\MaPPS-Form-4\MaPPSForm4.iml" filepath="C:\Users\sidra.nizam\MaPPS-Form-4\MaPPSForm4.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
