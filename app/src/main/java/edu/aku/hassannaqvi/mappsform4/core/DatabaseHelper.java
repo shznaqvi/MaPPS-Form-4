@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.ROW_PASSWORD + " TEXT );";
 
     public static final String DATABASE_NAME = "mapps_f2.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "(" +
             FormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -63,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SINFO + " TEXT," +
             FormsTable.COLUMN_SA + " TEXT," +
+            FormsTable.COLUMN_SB + " TEXT," +
             FormsTable.COLUMN_ENDINGDATETIME + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
@@ -74,6 +75,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
+    private static final String SQL_ALTER_FORMS = "ALTER TABLE " +
+            FormsTable.TABLE_NAME + " ADD COLUMN " +
+            FormsTable.COLUMN_SB + " TEXT;";
     private static final String SQL_CREATE_PARTICIPANTS = "CREATE TABLE "
             + ParticipantsTable.TABLE_NAME + "("
             + ParticipantsTable.COLUMN_PROJECTNAME + " TEXT,"
@@ -170,12 +175,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL(SQL_DELETE_USERS);
+        /*db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_ENROLLED);
         db.execSQL(SQL_DELETE_LHWS);
         db.execSQL(SQL_DELETE_CLUSTERS);
         db.execSQL(SQL_DELETE_FORMS);
-        db.execSQL(SQL_DELETE_PARTICIPANTS);
+        db.execSQL(SQL_DELETE_PARTICIPANTS);*/
+
+        switch (i) {
+            case 1:
+                db.execSQL(SQL_ALTER_FORMS);
+        }
     }
 
     public void syncUsers(JSONArray userlist) {
@@ -351,6 +361,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_SINFO, fc.getsInfo());
         values.put(FormsTable.COLUMN_SA, fc.getsA());
+        values.put(FormsTable.COLUMN_SB, fc.getsB());
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingDateTime());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -566,6 +577,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_SA, AppMain.fc.getsA());
+
+// Which row to update, based on the ID
+        String selection = " _ID = " + AppMain.fc.getID();
+        String[] selectionArgs = {String.valueOf(AppMain.fc.getID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+
+    public int updatesB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SB, AppMain.fc.getsB());
 
 // Which row to update, based on the ID
         String selection = " _ID = " + AppMain.fc.getID();
@@ -845,6 +874,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_LHWCODE,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -909,6 +939,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -976,6 +1007,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
                 FormsTable.COLUMN_SA,
+                FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,

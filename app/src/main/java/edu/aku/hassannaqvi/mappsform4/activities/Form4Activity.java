@@ -166,7 +166,7 @@ public class Form4Activity extends AppCompatActivity  {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
-                Intent sece = new Intent(this, EndingActivity.class);
+                Intent sece = new Intent(this, Form4_Section2Activity.class);
                 sece.putExtra("complete", true);
                 startActivity(sece);
 
