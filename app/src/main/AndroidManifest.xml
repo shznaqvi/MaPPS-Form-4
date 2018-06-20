@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.aku.hassannaqvi.mappsform4">
 
-    <uses-sdk
-        android:maxSdkVersion="22"
-        android:minSdkVersion="22"
-        android:targetSdkVersion="22" />
+    <!-- <uses-sdk
+         android:maxSdkVersion="22"
+         android:minSdkVersion="22"
+         android:targetSdkVersion="22" />-->
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
@@ -61,16 +61,18 @@
         <activity
             android:name=".core.AndroidDatabaseManager"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.InfoActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".activities.Form4Activity"
+        <activity
+            android:name=".activities.InfoActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activities.Form4Activity"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.Form5Activity"
+        <activity
+            android:name=".activities.Form5Activity"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".activities.Form4_Section2Activity"></activity>
     </application>
 
 </manifest>

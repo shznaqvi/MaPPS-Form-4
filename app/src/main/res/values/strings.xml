@@ -101,6 +101,61 @@
     <string name="mp04e002"> ڇا شرڪت ڪندڙ هينئر تائين الٽراسائونڊ ڪرايو آهي؟ </string>
     <string name="mp04e00202">صلاح ڏني وئي آهي الٽراسائونڊ ڪرائڻ لاء</string>
 
+    <!-- Section 2-->
+
+    <string name="mp04f">Section 2</string>
+    <string name="mp04fsub">جيئن ته توهان حامله  آهيو يا هاڻي ئي توهان کي ٻار ٿيو  آهي . اسان اهو ڄاڻڻ چاهيون ٿا ته توهان ڪيئن محسوس ڪري رهيا آهيو؟ مهراباني ڪري پنهنجي جواب کي صرف اڄوڪي ڏينهن  ئي نه پر گُزريل ستن ڏينهن جي تناظر ۾ رکي ڪري  هيٺ ڏنل جوابن مان توهان جي ڪيفيتن، محسوسات، سان ملندڙ جُلندڙ جواب کي مُنتخب ڪريو.</string>
+    <string name="mp04f001">گذريل ستن ڏينهن  دوران آء ان قابل هُئس ته پنهنجي روزمره جي مختلف ڪمن/ واقعن ۽ گُفتگو وغيره ۾ خوش ٿيڻ سميت انهن جا مزاح وارا رُخ ڏسي سگهان.</string>
+    <string name="mp04f001a">ايسيتائين، جيترو، مان هميشه ڪندي آهيان</string>
+    <string name="mp04f001b">نه اڳ جيترو نٿي ڪري سگهان</string>
+    <string name="mp04f001c">نه بلڪُل به اڳ جيترو نٿي ڪري سگهان </string>
+    <string name="mp04f001d">بلڪُل به نه</string>
+    <string name="mp04f002">گذريل ستن ڏينهن دوران مون زندگي/حالتن مان لطف اندوز ٿيڻ جي اميد رکي.</string>
+    <string name="mp04f002a">ايتري جيتري مان  هميشه رکندي آهيان</string>
+    <string name="mp04f002b">جيترو مان ڪندي آهيان ان کان ٿورو گهٽ</string>
+    <string name="mp04f002c">يقينن ان کان گھڻو گھٽ جيترو آئون ڪندي آهيان </string>
+    <string name="mp04f002d">مشڪل سان ڪڏهن</string>
+    <string name="mp04f003">گذريل ستن ڏينهن دوران ڳالهين جي غلط رخ وٺڻ کانپوء مون پنهنجو پاڻ  کي غير ضروري طور تي قصور وار پئي سمجهو</string>
+    <string name="mp04f003a">اڪثر اوقات </string>
+    <string name="mp04f003b">ها، ڪنھن ڪنھن مھل</string>
+    <string name="mp04f003c">اڪثر نه </string>
+    <string name="mp04f003d">نه، ڪڏهن به نه </string>
+    <string name="mp04f004">گذريل ستن ڏينهن دوران مان بنا ڪنهن مقصد جي فڪر مند ۽ پريشان رهيس</string>
+    <string name="mp04f004a">نه، بلڪل به نه </string>
+    <string name="mp04f004b">مشڪل سان ڪڏهن </string>
+    <string name="mp04f004c">ها، ڪڏهن ڪڏهن </string>
+    <string name="mp04f004d">ها، اڪثر ڪري </string>
+    <string name="mp04f005">گذريل ستن ڏينهن دوران مان بنا ڪنهن سبب جي خوف ۽ غم ۾ ورتل محسوس ڪيم.</string>
+    <string name="mp04f005a">ها،تمام گهڻو </string>
+    <string name="mp04f005b">ها،ڪڏهن ڪڏهن</string>
+    <string name="mp04f005c">نه،گھڻو نه</string>
+    <string name="mp04f005d">نه، ڪڏهن به نه </string>
+    <string name="mp04f006">گذريل ستن ڏينهن دوران شيون ايتريون ته وڌي ويون جو مان انهن کي منهن ڏئي نه پئي سگهيس</string>
+    <string name="mp04f006a">ها،اڪثر اوقات يا گھڻوڪري مان شين کي منهن ڏيڻ جي قابل نه  هُئس </string>
+    <string name="mp04f006b">ها،ڪڏهن ڪڏهن مان شين کي منهن ڏيڻ جي قابل نه رهيس، جيئن اڳ ۾ هُئس </string>
+    <string name="mp04f006c">نه، مون اڪثر ڪيترا ئي دفعا ان کي سُٺي طريقي سان مُنهن ڏنو آهي.</string>
+    <string name="mp04f006d">نه، مان ان کي ايئن ئي منهن ڏنو جيئن هميشه ڏيندي آهيان.</string>
+    <string name="mp04f007">گذريل ستن ڏينهن دوران مان ايتري  ته ناخوش هُيس جو مونکي ننڊ ڪرڻ  ۾ ڏُکيائي پيش آئي.</string>
+    <string name="mp04f007a">ھا، اڪثر ڪري ھر وقت </string>
+    <string name="mp04f007b">ها، ڪڏھن ڪڏھن</string>
+    <string name="mp04f007c">گھڻو ڪري نه </string>
+    <string name="mp04f007d">نه، ڪڏهن به نه </string>
+    <string name="mp04f008">گذريل ستن ڏينهن دوران مان ڏکويل ۽ دل شڪسته محسوس ڪيو</string>
+    <string name="mp04f008a">اڪثر ڪري هر وقت</string>
+    <string name="mp04f008b">بار بار </string>
+    <string name="mp04f008c">نه،گھڻو نه</string>
+    <string name="mp04f008d">نه، ڪڏهن به نه </string>
+    <string name="mp04f009">گذريل ستن ڏينهن دوران مان ايترو ته ناخوش هُيس جو مان رُنس</string>
+    <string name="mp04f009a">اڪثر ڪري هر وقت </string>
+    <string name="mp04f009b">بار بار </string>
+    <string name="mp04f009c">ڪنهن ڪنهن مهل </string>
+    <string name="mp04f009d">نه،ڪڏهن به نه</string>
+    <string name="mp04f010">گذريل ستن ڏينهن دوران مون پنهنجو پاڻ کي نقصان رسائڻ جو سوچيو.</string>
+    <string name="mp04f010a">بار بار </string>
+    <string name="mp04f010b">ڪڏهن ڪڏهن </string>
+    <string name="mp04f010c">مُشڪل سان ڪڏهن</string>
+    <string name="mp04f010d">نه،ڪڏهن به نه </string>
+
     <!-- Form 5 Strings-->
     <string name="secb">الٽراسائونڊ جي مطابق سوال جواب</string>
     <string name="ultcl">الٽراسائونڊ ڪلينڪ جو نالو</string>
