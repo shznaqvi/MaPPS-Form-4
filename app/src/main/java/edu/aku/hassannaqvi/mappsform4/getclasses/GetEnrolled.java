@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -111,8 +112,8 @@ public class GetEnrolled extends AsyncTask<Void, Void, String> {
             URL url = new URL(myurl);
             Log.d(TAG, "downloadUrl: " + myurl);
             conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
+            conn.setReadTimeout(31000);//milliseconds
+            conn.setConnectTimeout(41000); //milliseconds
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -146,10 +147,9 @@ public class GetEnrolled extends AsyncTask<Void, Void, String> {
 
             int HttpResult = conn.getResponseCode();
             if (HttpResult == HttpURLConnection.HTTP_OK) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(
-                        conn.getInputStream(), "utf-8"));
+                InputStream in = new BufferedInputStream(conn.getInputStream());
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
                 StringBuffer sb = new StringBuffer();
-
                 while ((line = br.readLine()) != null) {
                     sb.append(line + "\n");
                 }
@@ -167,6 +167,8 @@ public class GetEnrolled extends AsyncTask<Void, Void, String> {
         } catch (IOException e) {
 
             e.printStackTrace();
+        } finally {
+            conn.disconnect();
         }
 
         return line;
