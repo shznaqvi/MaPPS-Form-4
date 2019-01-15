@@ -955,7 +955,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 /*        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " = ?";
         String[] whereArgs = new String[]{"4"};
         String groupBy = null;
         String having = null;
@@ -1314,4 +1314,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return alc;
         }
     }
+
+    public String getlmp( String cluster_code,String lhw_id, String hhno ){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String lmp = null;
+        String query = "SELECT "+FormsTable.COLUMN_SA+" FROM " + FormsContract.FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_CLUSTERCODE + " = ? AND " + FormsTable.COLUMN_LHWCODE + " = ? AND " + FormsTable.COLUMN_HOUSEHOLD + " =? AND "+ FormsTable.COLUMN_FORMTYPE +" = ?";
+
+        Cursor mCursor = db.rawQuery(query, new String[]{ cluster_code,lhw_id, hhno,"4"});
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                lmp = mCursor.getString(mCursor.getColumnIndex(FormsTable.COLUMN_SA));
+            }
+        }
+        db.close();
+        return lmp;
+
+        /*
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        String lmp = "";
+
+        try {
+            String query = "SELECT "+FormsTable.COLUMN_SA+" FROM " + FormsContract.FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_CLUSTERCODE + " = ? AND " + FormsTable.COLUMN_LHWCODE + " = ? AND " + FormsTable.COLUMN_HOUSEHOLD + " =? AND "+ FormsTable.COLUMN_FORMTYPE +" = ?";
+            cursor = db.rawQuery(
+                    query,
+                    new String[]{ cluster_code,lhw_id, hhno,"4"}
+            );
+
+            if (null != cursor)
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    lmp = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
+                }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return lmp;*/
+    }
+
 }

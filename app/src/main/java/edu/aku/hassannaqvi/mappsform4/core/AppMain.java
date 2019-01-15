@@ -15,6 +15,8 @@ import android.view.View;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
@@ -65,6 +67,7 @@ public class AppMain extends Application {
     private static final long DAYS_IN_8Months = 243;
     public static final long MILLISECONDS_IN_8Months = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_8Months;
 
+    public static String EDD_DATE;
     private static final String TAG = AppMain.class.getSimpleName();
     public static int NoMembers = 7;
     public static String deviceId;

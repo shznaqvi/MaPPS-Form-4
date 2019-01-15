@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -29,12 +30,13 @@ import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
-public class Form5Activity extends AppCompatActivity  {
+public class Form5Activity extends AppCompatActivity {
 
     private static final String TAG = Form5Activity.class.getSimpleName();
 
 
-    @BindView(R.id.app_header) TextView appHeader;
+    @BindView(R.id.app_header)
+    TextView appHeader;
     @BindView(R.id.grpcrl)
     LinearLayout grpcrl;
     @BindView(R.id.crl)
@@ -75,38 +77,52 @@ public class Form5Activity extends AppCompatActivity  {
     EditText mp05b002fld;
     @BindView(R.id.mp05b00104)
     CheckBox mp05b00104;
-    @BindView(R.id.mp05c001) RadioGroup mp05c001;
-    @BindView(R.id.mp05c00101) RadioButton mp05c00101;
-    @BindView(R.id.mp05c00102) RadioButton mp05c00102;
+    @BindView(R.id.mp05c001)
+    RadioGroup mp05c001;
+    @BindView(R.id.mp05c00101)
+    RadioButton mp05c00101;
+    @BindView(R.id.mp05c00102)
+    RadioButton mp05c00102;
     @BindView(R.id.mp05c00103)
     RadioButton mp05c00103;
-    @BindView(R.id.mp05c002) RadioGroup mp05c002;
-    @BindView(R.id.mp05c00201) RadioButton mp05c00201;
-    @BindView(R.id.mp05c00202) RadioButton mp05c00202;
+    @BindView(R.id.mp05c002)
+    RadioGroup mp05c002;
+    @BindView(R.id.mp05c00201)
+    RadioButton mp05c00201;
+    @BindView(R.id.mp05c00202)
+    RadioButton mp05c00202;
     @BindView(R.id.mp05c00203)
     RadioButton mp05c00203;
-    @BindView(R.id.mp05c003) RadioGroup mp05c003;
-    @BindView(R.id.mp05c00301) RadioButton mp05c00301;
-    @BindView(R.id.mp05c00302) RadioButton mp05c00302;
+    @BindView(R.id.mp05c003)
+    RadioGroup mp05c003;
+    @BindView(R.id.mp05c00301)
+    RadioButton mp05c00301;
+    @BindView(R.id.mp05c00302)
+    RadioButton mp05c00302;
     @BindView(R.id.mp05c00303)
     RadioButton mp05c00303;
-    @BindView(R.id.mp05c004) RadioGroup mp05c004;
-    @BindView(R.id.mp05c00401) RadioButton mp05c00401;
-    @BindView(R.id.mp05c00402) RadioButton mp05c00402;
+    @BindView(R.id.mp05c004)
+    RadioGroup mp05c004;
+    @BindView(R.id.mp05c00401)
+    RadioButton mp05c00401;
+    @BindView(R.id.mp05c00402)
+    RadioButton mp05c00402;
     @BindView(R.id.mp05c00403)
     RadioButton mp05c00403;
-    @BindView(R.id.mp05c005) RadioGroup mp05c005;
-    @BindView(R.id.mp05c00501) RadioButton mp05c00501;
-    @BindView(R.id.mp05c00502) RadioButton mp05c00502;
+    @BindView(R.id.mp05c005)
+    RadioGroup mp05c005;
+    @BindView(R.id.mp05c00501)
+    RadioButton mp05c00501;
+    @BindView(R.id.mp05c00502)
+    RadioButton mp05c00502;
     @BindView(R.id.mp05c00503)
     RadioButton mp05c00503;
     @BindView(R.id.mp05c005x)
     EditText mp05c005x;
-    @BindView(R.id.mp05c006) DatePickerInputEditText mp05c006;
+    @BindView(R.id.mp05c006)
+    DatePickerInputEditText mp05c006;
     @BindView(R.id.mp05c007)
     DatePickerInputEditText mp05c007;
-
-
 
 
     String dateToday;
@@ -120,16 +136,24 @@ public class Form5Activity extends AppCompatActivity  {
         String maxDate8Months = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((AppMain.MILLISECONDS_IN_8Months) + AppMain.MILLISECONDS_IN_DAY));
         dateToday = new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis());
 
+
         mp05c006.setManager(getSupportFragmentManager());
-        mp05c006.setMinDate(dateToday);
-        mp05c006.setMaxDate(maxDate9Months);
+        if (TextUtils.isEmpty(AppMain.EDD_DATE)) {
+            mp05c006.setMinDate(dateToday);
+            mp05c006.setMaxDate(maxDate9Months);
+        }else{
+            mp05c006.setText(new SimpleDateFormat("dd/MM/yyyy").format(AppMain.EDD_DATE));
+            mp05c006.setEnabled(false);
+
+        }
+
+
         mp05c007.setManager(getSupportFragmentManager());
         mp05c007.setMaxDate(dateToday);
         mp05c007.setMinDate(maxDate8Months);
 
 
-        mp05c005.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
+        mp05c005.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 if (mp05c00501.isChecked()) {
@@ -141,8 +165,7 @@ public class Form5Activity extends AppCompatActivity  {
             }
         });
 
-        mp05b00104.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        mp05b00104.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -179,8 +202,7 @@ public class Form5Activity extends AppCompatActivity  {
             }
         });
 
-        crl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        crl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -194,8 +216,7 @@ public class Form5Activity extends AppCompatActivity  {
         });
 
 
-        bpd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        bpd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -208,8 +229,7 @@ public class Form5Activity extends AppCompatActivity  {
             }
         });
 
-        fl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        fl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -225,7 +245,8 @@ public class Form5Activity extends AppCompatActivity  {
 
     }
 
-    @OnClick(R.id.btn_End) void onBtnEndClick() {
+    @OnClick(R.id.btn_End)
+    void onBtnEndClick() {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
 //        if (ValidateForm()) {
@@ -235,6 +256,8 @@ public class Form5Activity extends AppCompatActivity  {
 //                e.printStackTrace();
 //            }
 //            if (UpdateDB()) {
+        AppMain.EDD_DATE = "";
+
         finish();
         Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
         Intent endSec = new Intent(this, EndingActivity.class);
@@ -249,8 +272,8 @@ public class Form5Activity extends AppCompatActivity  {
     }
 
 
-
-    @OnClick(R.id.btn_Continue) void onBtnContinueClick() {
+    @OnClick(R.id.btn_Continue)
+    void onBtnContinueClick() {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
         if (ValidateForm()) {
@@ -261,7 +284,7 @@ public class Form5Activity extends AppCompatActivity  {
             }
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
-
+AppMain.EDD_DATE = "";
                 finish();
 
                 Intent sece = new Intent(this, EndingActivity.class);
@@ -497,12 +520,10 @@ public class Form5Activity extends AppCompatActivity  {
             }
 
 
-
-
         }
 
 
-        if (mp05c001.getCheckedRadioButtonId() == -1 ) {
+        if (mp05c001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c001), Toast.LENGTH_SHORT).show();
             mp05c00101.setError("This data is Required!");
             Log.i(TAG, "mp05c001: This data is Required!");
@@ -511,7 +532,7 @@ public class Form5Activity extends AppCompatActivity  {
             mp05c00101.setError(null);
         }
 
-        if (mp05c002.getCheckedRadioButtonId() == -1 ) {
+        if (mp05c002.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c002), Toast.LENGTH_SHORT).show();
             mp05c00201.setError("This data is Required!");
             Log.i(TAG, "mp05c002: This data is Required!");
@@ -520,7 +541,7 @@ public class Form5Activity extends AppCompatActivity  {
             mp05c00201.setError(null);
         }
 
-        if (mp05c003.getCheckedRadioButtonId() == -1 ) {
+        if (mp05c003.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c003), Toast.LENGTH_SHORT).show();
             mp05c00301.setError("This data is Required!");
             Log.i(TAG, "mp05c003: This data is Required!");
@@ -529,7 +550,7 @@ public class Form5Activity extends AppCompatActivity  {
             mp05c00301.setError(null);
         }
 
-        if (mp05c004.getCheckedRadioButtonId() == -1 ) {
+        if (mp05c004.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c004), Toast.LENGTH_SHORT).show();
             mp05c00401.setError("This data is Required!");
             Log.i(TAG, "mp05c004: This data is Required!");
@@ -538,7 +559,7 @@ public class Form5Activity extends AppCompatActivity  {
             mp05c00401.setError(null);
         }
 
-        if (mp05c005.getCheckedRadioButtonId() == -1 ) {
+        if (mp05c005.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.mp05c005x), Toast.LENGTH_SHORT).show();
             mp05c00501.setError("This data is Required!");
             Log.i(TAG, "mp05c00501: This data is Required!");
@@ -575,7 +596,6 @@ public class Form5Activity extends AppCompatActivity  {
         } else {
             mp05c007.setError(null);
         }
-
 
 
         return true;
@@ -630,7 +650,6 @@ public class Form5Activity extends AppCompatActivity  {
         //return true;
 
     }
-
 
 
 }

@@ -34,12 +34,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
+import edu.aku.hassannaqvi.mappsform4.JSONModels.JSONAModelClass;
 import edu.aku.hassannaqvi.mappsform4.R;
 import edu.aku.hassannaqvi.mappsform4.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.FormsContract;
 import edu.aku.hassannaqvi.mappsform4.contracts.LHWsContract;
 import edu.aku.hassannaqvi.mappsform4.core.AppMain;
 import edu.aku.hassannaqvi.mappsform4.core.DatabaseHelper;
+import edu.aku.hassannaqvi.mappsform4.other.JSONUtilClass;
+
+import static edu.aku.hassannaqvi.mappsform4.other.DateUtils.getEDD;
 
 public class InfoActivity extends Activity {
 
@@ -245,6 +249,12 @@ public class InfoActivity extends Activity {
                     Intent intent = new Intent(this, Form4Activity.class);
                     startActivity(intent);
                 } else if (AppMain.formType.equals("5") && mp04a01301.isChecked()) {
+                    String A1_JSON = db.getlmp(AppMain.fc.getClustercode(),AppMain.fc.getLhwCode(), AppMain.fc.getHousehold());
+                    JSONAModelClass jsonA = JSONUtilClass.getModelFromJSON(A1_JSON, JSONAModelClass.class);
+                    if (jsonA.getMp04b00199().equals("0")||jsonA.getMp04b00199().equals("")) {
+                        AppMain.EDD_DATE = getEDD(jsonA.getMp04b001());
+                    }
+
                     Intent intent = new Intent(this, Form5Activity.class);
                     startActivity(intent);
                 } else if (mp04a01302.isChecked()) {
