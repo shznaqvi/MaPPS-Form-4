@@ -141,8 +141,8 @@ public class Form5Activity extends AppCompatActivity {
         if (TextUtils.isEmpty(AppMain.EDD_DATE)) {
             mp05c006.setMinDate(dateToday);
             mp05c006.setMaxDate(maxDate9Months);
-        }else{
-            mp05c006.setText(new SimpleDateFormat("dd/MM/yyyy").format(AppMain.EDD_DATE));
+        } else {
+            mp05c006.setText(AppMain.EDD_DATE);
             mp05c006.setEnabled(false);
 
         }
@@ -284,7 +284,7 @@ public class Form5Activity extends AppCompatActivity {
             }
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
-AppMain.EDD_DATE = "";
+                AppMain.EDD_DATE = "";
                 finish();
 
                 Intent sece = new Intent(this, EndingActivity.class);

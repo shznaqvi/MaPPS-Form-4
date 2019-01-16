@@ -10,7 +10,6 @@ import java.util.Locale;
 public class DateUtils {
 
         public static String getEDD(String string_date){
-//            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
             DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date date = null;
             try {
@@ -22,7 +21,8 @@ public class DateUtils {
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             cal.add(Calendar.DAY_OF_YEAR, 280);
-            return cal.getTime().toString();
+            String date1 = formatter.format(cal.getTime());
+            return date1;
         }
 
 
