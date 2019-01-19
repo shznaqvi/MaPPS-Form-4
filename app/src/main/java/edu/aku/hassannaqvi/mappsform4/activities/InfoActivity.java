@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -192,7 +193,7 @@ public class InfoActivity extends Activity {
 
             check = true;
 
-            mp04a003.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,partNames));
+            mp04a003.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, partNames));
 
 
         } else {
@@ -249,12 +250,13 @@ public class InfoActivity extends Activity {
                     Intent intent = new Intent(this, Form4Activity.class);
                     startActivity(intent);
                 } else if (AppMain.formType.equals("5") && mp04a01301.isChecked()) {
-                    String A1_JSON = db.getlmp(AppMain.fc.getClustercode(),AppMain.fc.getLhwCode(), AppMain.fc.getHousehold());
+                    String A1_JSON = db.getlmp(AppMain.fc.getClustercode(), AppMain.fc.getLhwCode(), AppMain.fc.getHousehold());
                     JSONAModelClass jsonA = JSONUtilClass.getModelFromJSON(A1_JSON, JSONAModelClass.class);
-                    if (jsonA.getMp04b00199().equals("0")||jsonA.getMp04b00199().equals("")) {
-                        AppMain.EDD_DATE = getEDD(jsonA.getMp04b001());
+                    if (jsonA != null) {
+                        if (jsonA.getMp04b00199().equals("0") || jsonA.getMp04b00199().equals("")) {
+                            AppMain.EDD_DATE = getEDD(jsonA.getMp04b001());
+                        }
                     }
-
                     Intent intent = new Intent(this, Form5Activity.class);
                     startActivity(intent);
                 } else if (mp04a01302.isChecked()) {
@@ -461,7 +463,6 @@ public class InfoActivity extends Activity {
                 mp05a012.setError(null);
             }
         }
-
 
 
         if (mp04a013.getCheckedRadioButtonId() == -1) {
